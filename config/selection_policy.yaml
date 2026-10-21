@@ -1,0 +1,42 @@
+schema_version: selection-policy-v1
+policy_id: stage06-selection-v3-compatible
+version: 0.1.0
+mode: episode
+allowed_modes: [episode, case_requirement]
+empty_filter_semantics: no_restriction
+scope_filters:
+  domains: []
+  work_objects: []
+  taxonomy_rows: []
+quality_policy_dependency: false
+selection_score_enabled: false
+capacity: null
+coverage_quotas: {}
+rules:
+  S1:
+    name: 主需求及具体子需求成立
+    evaluator: deterministic_supported_primary_mapping
+    pass: 至少一个 primary capability mapping 有 supported claim 与有效 evidence 引用
+  S2:
+    name: 任务有实质性挑战
+    evaluator: deterministic_episode_difficulty
+    pass_values: [medium, high]
+    fail_values: [low]
+    pending_values: [unknown]
+  S3:
+    name: 能还原连贯的任务要求
+    evaluator: audited_semantic_input
+  S4:
+    name: 完成条件可从已有记录明确
+    evaluator: audited_semantic_input
+prechecks: [valid_schema, valid_references, scope_match, no_selection_critical_unresolved_conflict]
+decision_table:
+  invalid_precheck: invalid
+  scope_or_rule_fail: not_selected
+  all_pass: selected
+  otherwise: pending_review
+legacy_decision_names:
+  selected: priority_candidate
+  pending_review: review
+  not_selected: not_selected
+  invalid: review

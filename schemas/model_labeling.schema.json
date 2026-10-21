@@ -1,0 +1,152 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "difficulty",
+    "capability_mappings",
+    "claims",
+    "S3",
+    "S4"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "difficulty": {
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "unknown"
+      ]
+    },
+    "difficulty_evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "capability_mappings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "mapping_id",
+          "requirement_id",
+          "taxonomy_row",
+          "status",
+          "evidence_refs",
+          "reason"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "mapping_id": {
+            "type": "string"
+          },
+          "requirement_id": {
+            "type": "string"
+          },
+          "taxonomy_row": {
+            "type": "integer"
+          },
+          "status": {
+            "enum": [
+              "supported",
+              "unsupported",
+              "unresolved",
+              "invalid"
+            ]
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "reason": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "claim_id",
+          "field_path",
+          "support_status",
+          "evidence_refs",
+          "reason"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "claim_id": {
+            "type": "string"
+          },
+          "field_path": {
+            "type": "string"
+          },
+          "support_status": {
+            "enum": [
+              "supported",
+              "contradicted",
+              "insufficient",
+              "invalid"
+            ]
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "reason": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "S3": {
+      "$ref": "#/$defs/rule"
+    },
+    "S4": {
+      "$ref": "#/$defs/rule"
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "$defs": {
+    "rule": {
+      "type": "object",
+      "required": [
+        "status",
+        "reason",
+        "evidence_refs"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "pass",
+            "fail",
+            "pending",
+            "invalid"
+          ]
+        },
+        "reason": {
+          "type": "string"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

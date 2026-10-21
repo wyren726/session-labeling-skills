@@ -1,0 +1,4 @@
+interface:
+  display_name: "Session Understanding"
+  short_description: "Normalize native session JSONL and recover canonical turns, Episodes, user goals, requirem"
+  default_prompt: "Use $session-understanding to process the supplied session artifacts."

@@ -1,0 +1,648 @@
+{
+  "schema_version": "legacy-lineage-v1",
+  "status": "design_baseline",
+  "generated_on": "2026-10-20",
+  "purpose": "Field-level dependency baseline for reconstructing the effective Stage 01-06 behavior from raw session JSONL without preserving the historical stage layout.",
+  "source_locator": "${TRACE_ANALYSIS_SOURCE}",
+  "evidence_classes": {
+    "code_behavior": "Static or directly inspected executable behavior in the legacy source tree.",
+    "document_statement": "Normative or explanatory text; draft status is preserved and does not imply execution.",
+    "historical_artifact": "Observed schema, manifest, count, hash, or frozen output from the four historical batches.",
+    "test_behavior": "Behavior asserted by legacy tests; to be cataloged in implementation phase.",
+    "new_design": "Proposed canonical behavior, not a claim about history."
+  },
+  "authoritative_history": {
+    "frozen_selection_policy": "stage06-selection-v3",
+    "frozen_selection_policy_sha256": "ed30b85113868d335fda90aad9321caa62765423eb8db87f966ceb7e2690231f",
+    "frozen_requirement_taxonomy_sha256": "96bd11c79ff7de9cb7d096fc84c1b8d72404244a8d2561498e2199001e8bfd4a",
+    "quality_policy_enabled": false,
+    "frozen_decision_counts": {
+      "priority_candidate": 780,
+      "review": 498,
+      "not_selected": 0
+    },
+    "frozen_unique_sessions": 672,
+    "frozen_single_model_sessions": 671,
+    "note": "A later 172-candidate review version for one batch is outside the frozen first-selection 780 baseline."
+  },
+  "capability_nodes": [
+    {
+      "id": "raw_session",
+      "historical_stage": "input",
+      "capability": "Read native session JSONL and preserve source identity.",
+      "canonical_owner": "session-understanding",
+      "inputs": [
+        "native session.jsonl"
+      ],
+      "outputs": [
+        "source file digest",
+        "record positions",
+        "raw event identity"
+      ],
+      "evidence": [
+        {
+          "class": "code_behavior",
+          "path": "src/trace_analysis/preprocessing/adapters/session_jsonl.py"
+        }
+      ]
+    },
+    {
+      "id": "normalized_session",
+      "historical_stage": "Stage 01 preprocess",
+      "capability": "Normalize heterogeneous native records into trace, turn, and event records while retaining source references.",
+      "canonical_owner": "session-understanding",
+      "inputs": [
+        "raw_session"
+      ],
+      "outputs": [
+        "unified_traces.jsonl",
+        "unified_turns.jsonl",
+        "rejected_records.jsonl"
+      ],
+      "retention": "retain_and_rewrite",
+      "evidence": [
+        {
+          "class": "code_behavior",
+          "path": "src/trace_analysis/preprocessing/pipeline.py"
+        },
+        {
+          "class": "historical_artifact",
+          "path": "docs/audit/legacy-record-shapes.json",
+          "observation": "All four frozen batches have unified trace and turn artifacts."
+        }
+      ]
+    },
+    {
+      "id": "episode_understanding",
+      "historical_stage": "Stage 02 user screen / analyze",
+      "capability": "Recover task episodes, boundaries, initial query, user goal, requirement origin/evolution, domain, analysis value, and user-side candidate signals from real user events.",
+      "canonical_owner": "session-understanding",
+      "inputs": [
+        "normalized_session.user_events"
+      ],
+      "outputs": [
+        "task_episodes",
+        "episode_boundary",
+        "preliminary_goal",
+        "requirement_evolution",
+        "candidate_signals"
+      ],
+      "retention": "retain_semantics_merge_versions",
+      "invariants": [
+        "User-only analysis must not infer Agent failure or capability gaps.",
+        "Episode boundaries are task-goal boundaries, not arbitrary turn windows.",
+        "Each requirement, change, and signal must cite an exact user event and quote."
+      ],
+      "evidence": [
+        {
+          "class": "code_behavior",
+          "path": "src/trace_analysis/pipeline/stage_02_analyze/prompt.py"
+        },
+        {
+          "class": "code_behavior",
+          "path": "src/trace_analysis/pipeline/stage_02_analyze/compact.py"
+        },
+        {
+          "class": "historical_artifact",
+          "path": "docs/audit/legacy-field-catalog.json",
+          "role": "user_screen"
+        }
+      ]
+    },
+    {
+      "id": "agent_verification",
+      "historical_stage": "Stage 03 agent verify (and early combined Stage 02 runs)",
+      "capability": "Read assistant, tool, error, and follow-up evidence to confirm/revise goals, evaluate each requirement, classify outcome, and separate Agent-related failure from permission, external, or user causes.",
+      "canonical_owner": "session-evidence-analysis",
+      "inputs": [
+        "episode_understanding",
+        "normalized_session.full_episode_events"
+      ],
+      "outputs": [
+        "goal_assessment",
+        "requirement_results",
+        "confirmed_requirements",
+        "outcome",
+        "agent_related",
+        "attribution",
+        "capability_gaps",
+        "evidence_review"
+      ],
+      "retention": "retain_semantics_merge_versions",
+      "invariants": [
+        "Agent claimed completion is not evidence-verified completion.",
+        "Tool calls do not prove successful execution; corresponding results are required.",
+        "Insufficient evidence remains unknown/reviewable rather than becoming failure."
+      ],
+      "evidence": [
+        {
+          "class": "code_behavior",
+          "path": "src/trace_analysis/pipeline/stage_02_analyze/prompt.py",
+          "symbol": "AGENT_ATTRIBUTION_OUTPUT_SHAPE"
+        },
+        {
+          "class": "code_behavior",
+          "path": "src/trace_analysis/pipeline/stage_03_agent_verify/runner.py"
+        },
+        {
+          "class": "historical_artifact",
+          "path": "docs/audit/legacy-field-catalog.json",
+          "role": "agent_verify"
+        }
+      ]
+    },
+    {
+      "id": "historical_pain_case",
+      "historical_stage": "Stage 04 build results",
+      "capability": "Build one case per verified Episode and deterministically expose historical Agent attribution status with evidence and source references.",
+      "canonical_owner": "session-evidence-analysis",
+      "inputs": [
+        "agent_verification",
+        "normalized_session"
+      ],
+      "outputs": [
+        "pain_case",
+        "pain_judgment",
+        "judgment_reason_codes",
+        "evidence_references",
+        "source_references"
+      ],
+      "retention": "retain_as_historical_context_not_quality_truth",
+      "decision_table": [
+        {
+          "when": "agent_assessment.agent_related == true",
+          "pain_judgment": "confirmed"
+        },
+        {
+          "when": "agent_assessment.agent_related == false",
+          "pain_judgment": "excluded"
+        },
+        {
+          "when": "agent_related is null/missing or evidence/required fields are unresolved",
+          "pain_judgment": "review"
+        }
+      ],
+      "invariants": [
+        "pain_judgment is Agent attribution, not task outcome, trace quality, label support, or final selection.",
+        "Stage 05 publishing does not contribute new semantic judgments."
+      ],
+      "evidence": [
+        {
+          "class": "code_behavior",
+          "path": "src/trace_analysis/pipeline/stage_04_build_results/builder.py",
+          "symbol": "_judgment_and_reasons"
+        }
+      ]
+    },
+    {
+      "id": "episode_source_bundle",
+      "historical_stage": "Stage 06 source index and evidence retrieval",
+      "capability": "Reload the authoritative Episode plus the next real-user lookahead, verify source identity, index all events, and selectively retrieve exact tool bodies without silently truncating evidence.",
+      "canonical_owner": "session-evidence-analysis",
+      "inputs": [
+        "historical_pain_case.episode_boundary",
+        "normalized_session.unified_turns"
+      ],
+      "outputs": [
+        "evidence bundle",
+        "provided_event_ids",
+        "omitted_body_event_ids",
+        "source positions",
+        "retrieval provenance"
+      ],
+      "retention": "retain_and_generalize",
+      "invariants": [
+        "Boundary start/end must exist in the same trace and source batch.",
+        "The query turn must lie inside the Episode.",
+        "Every quote must be a continuous substring of a provided event body.",
+        "Omitted tool bodies must never be treated as verified evidence."
+      ],
+      "evidence": [
+        {
+          "class": "code_behavior",
+          "path": "src/trace_analysis/pipeline/stage_06_trace_quality_labeling/source_index.py"
+        },
+        {
+          "class": "code_behavior",
+          "path": "src/trace_analysis/pipeline/stage_06_trace_quality_labeling/evidence_retrieval.py"
+        }
+      ]
+    },
+    {
+      "id": "semantic_labels",
+      "historical_stage": "Stage 06 labeling",
+      "capability": "Produce requirements, task attributes, taxonomy mappings, assessments, feedback/failure annotations, claims, evidence references, and limitations with explicit evidence support.",
+      "canonical_owner": "session-quality-labeling",
+      "inputs": [
+        "episode_understanding",
+        "agent_verification",
+        "episode_source_bundle",
+        "requirement taxonomy"
+      ],
+      "outputs": [
+        "assessment_target",
+        "case_requirements",
+        "task_attributes",
+        "capability_mapping",
+        "episode_assessment",
+        "requirement_assessments",
+        "feedback_annotations",
+        "failure_annotations",
+        "claims",
+        "evidence_refs",
+        "limitations"
+      ],
+      "retention": "retain_core_rewrite_contract",
+      "invariants": [
+        "claims[].support_status evaluates one field_path claim, not the whole trace.",
+        "capability_mapping[].mapping_status evaluates requirement-taxonomy mapping, not claim evidence support.",
+        "review_view is deterministically derived and is not an independent source of truth.",
+        "Primary requirements req_001-req_033 and auxiliary-only req_034-req_036 remain distinct."
+      ],
+      "evidence": [
+        {
+          "class": "code_behavior",
+          "path": "src/trace_analysis/pipeline/stage_06_trace_quality_labeling/schemas/model_output.schema.json"
+        },
+        {
+          "class": "code_behavior",
+          "path": "src/trace_analysis/pipeline/stage_06_trace_quality_labeling/selection.py",
+          "lines": "127-198"
+        },
+        {
+          "class": "historical_artifact",
+          "path": "docs/audit/legacy-field-catalog.json",
+          "role": "stage06_labels_jsonl"
+        }
+      ]
+    },
+    {
+      "id": "label_review",
+      "historical_stage": "Stage 06 label review",
+      "capability": "Override claim support only through version-bound review records and preserve reviewer identity and cited evidence.",
+      "canonical_owner": "session-quality-audit",
+      "inputs": [
+        "semantic_labels",
+        "episode_source_bundle"
+      ],
+      "outputs": [
+        "claim reviews",
+        "review status",
+        "review provenance"
+      ],
+      "retention": "retain",
+      "invariants": [
+        "Model initial support is not human verification.",
+        "A corrected review must be applied to a new label version before selection.",
+        "Disagreeing or unaccepted reviews resolve to unknown, not an arbitrary winner."
+      ],
+      "evidence": [
+        {
+          "class": "code_behavior",
+          "path": "src/trace_analysis/pipeline/stage_06_trace_quality_labeling/selection.py",
+          "lines": "247-282"
+        }
+      ]
+    },
+    {
+      "id": "selection_rule_audit",
+      "historical_stage": "Stage 06 selection review",
+      "capability": "Evaluate S3/S4 (and explicitly supplied S1/S2 audits) against existing supported claims and exact evidence without inventing task labels.",
+      "canonical_owner": "session-quality-selection",
+      "inputs": [
+        "semantic_labels",
+        "label_review",
+        "episode_source_bundle",
+        "selection_policy"
+      ],
+      "outputs": [
+        "rule_checks.S1-S4",
+        "additional_evidence_refs",
+        "reviewer provenance"
+      ],
+      "retention": "retain_separate_from_labels",
+      "invariants": [
+        "Rule checks are selection execution records, not semantic task attributes.",
+        "Pass/fail must cite usable supported claims; unknown evidence becomes pending.",
+        "S3/S4 may register exact additional quotes only from bodies already provided."
+      ],
+      "evidence": [
+        {
+          "class": "code_behavior",
+          "path": "src/trace_analysis/pipeline/stage_06_trace_quality_labeling/config/selection_review_prompt.md"
+        },
+        {
+          "class": "code_behavior",
+          "path": "src/trace_analysis/pipeline/stage_06_trace_quality_labeling/schemas/selection_audit.schema.json"
+        }
+      ]
+    },
+    {
+      "id": "selection_decision",
+      "historical_stage": "Stage 06 selection",
+      "capability": "Apply prechecks and S1-S4 deterministically and emit a versioned selection decision with hashes and reasons.",
+      "canonical_owner": "session-quality-selection",
+      "inputs": [
+        "semantic_labels",
+        "label_review",
+        "selection_rule_audit",
+        "selection_policy"
+      ],
+      "outputs": [
+        "prechecks",
+        "rule_checks",
+        "decision",
+        "reason_codes",
+        "policy hash",
+        "label hash"
+      ],
+      "retention": "retain_with_canonical_status_names",
+      "decision_table": [
+        {
+          "when": "valid_label_and_references != pass",
+          "legacy": "review",
+          "canonical": "invalid or pending_review, distinguished by error class"
+        },
+        {
+          "when": "scope_match == fail or any S1-S4 == fail",
+          "legacy": "not_selected",
+          "canonical": "not_selected"
+        },
+        {
+          "when": "all prechecks and S1-S4 == pass",
+          "legacy": "priority_candidate",
+          "canonical": "selected"
+        },
+        {
+          "when": "otherwise",
+          "legacy": "review",
+          "canonical": "pending_review"
+        }
+      ],
+      "evidence": [
+        {
+          "class": "code_behavior",
+          "path": "src/trace_analysis/pipeline/stage_06_trace_quality_labeling/selection.py",
+          "lines": "284-419"
+        },
+        {
+          "class": "code_behavior",
+          "path": "src/trace_analysis/pipeline/stage_06_trace_quality_labeling/config/selection_policy.json"
+        },
+        {
+          "class": "historical_artifact",
+          "path": "docs/audit/legacy-historical-artifacts.json"
+        }
+      ]
+    },
+    {
+      "id": "audit_export",
+      "historical_stage": "Stage 05 publishing plus Stage 06 reports/session export",
+      "capability": "Validate contracts, detect conflicts and missing provenance, export selected native sessions, and compare new runs with frozen historical results.",
+      "canonical_owner": "session-quality-audit and session-labeling-pipeline",
+      "inputs": [
+        "all prior canonical artifacts"
+      ],
+      "outputs": [
+        "audit report",
+        "selected native sessions",
+        "run manifest",
+        "regression report"
+      ],
+      "retention": "rewrite",
+      "invariants": [
+        "Export must join selection to source lineage explicitly; null source fields in historical selection records are not acceptable canonical lineage.",
+        "Publishing views are generated from canonical records and cannot introduce labels."
+      ],
+      "evidence": [
+        {
+          "class": "code_behavior",
+          "path": "src/trace_analysis/pipeline/stage_05_report_publish"
+        },
+        {
+          "class": "code_behavior",
+          "path": "src/trace_analysis/pipeline/stage_06_trace_quality_labeling/session_export.py"
+        },
+        {
+          "class": "historical_artifact",
+          "path": "docs/audit/legacy-record-shapes.json"
+        }
+      ]
+    }
+  ],
+  "dependency_edges": [
+    {
+      "from": "raw_session",
+      "to": "normalized_session",
+      "kind": "structural_normalization"
+    },
+    {
+      "from": "normalized_session",
+      "to": "episode_understanding",
+      "kind": "user_event_projection"
+    },
+    {
+      "from": "episode_understanding",
+      "to": "agent_verification",
+      "kind": "hypothesis_verification"
+    },
+    {
+      "from": "normalized_session",
+      "to": "agent_verification",
+      "kind": "assistant_tool_error_evidence"
+    },
+    {
+      "from": "agent_verification",
+      "to": "historical_pain_case",
+      "kind": "deterministic_agent_attribution_view"
+    },
+    {
+      "from": "normalized_session",
+      "to": "episode_source_bundle",
+      "kind": "authoritative_source_reload"
+    },
+    {
+      "from": "episode_understanding",
+      "to": "episode_source_bundle",
+      "kind": "episode_boundary"
+    },
+    {
+      "from": "episode_understanding",
+      "to": "semantic_labels",
+      "kind": "goal_requirement_context"
+    },
+    {
+      "from": "agent_verification",
+      "to": "semantic_labels",
+      "kind": "behavior_outcome_context"
+    },
+    {
+      "from": "episode_source_bundle",
+      "to": "semantic_labels",
+      "kind": "exact_evidence"
+    },
+    {
+      "from": "semantic_labels",
+      "to": "label_review",
+      "kind": "version_bound_claim_review"
+    },
+    {
+      "from": "semantic_labels",
+      "to": "selection_rule_audit",
+      "kind": "supported_claim_catalog"
+    },
+    {
+      "from": "episode_source_bundle",
+      "to": "selection_rule_audit",
+      "kind": "exact_rule_evidence"
+    },
+    {
+      "from": "label_review",
+      "to": "selection_decision",
+      "kind": "effective_claim_support"
+    },
+    {
+      "from": "selection_rule_audit",
+      "to": "selection_decision",
+      "kind": "S3_S4_and_explicit_rule_checks"
+    },
+    {
+      "from": "selection_decision",
+      "to": "audit_export",
+      "kind": "selected_source_join"
+    }
+  ],
+  "selection_lineage": {
+    "prechecks.valid_label_and_references": {
+      "derived_from": [
+        "schema validation",
+        "ID uniqueness",
+        "claim/evidence/requirement references",
+        "taxonomy hierarchy",
+        "field_path existence",
+        "exact quote/source/turn/locator/Episode checks",
+        "review/audit hashes"
+      ],
+      "source_nodes": [
+        "semantic_labels",
+        "label_review",
+        "selection_rule_audit",
+        "episode_source_bundle"
+      ],
+      "behavior": "Invalid labels become legacy review; canonical design separates invalid processing state from semantic pending review."
+    },
+    "prechecks.scope_match": {
+      "derived_from": [
+        "configured domain/work-object/taxonomy filters",
+        "supported claims",
+        "reviewed negative matches"
+      ],
+      "source_nodes": [
+        "semantic_labels",
+        "label_review"
+      ],
+      "behavior": "Empty filters mean no restriction. Episode attributes cannot silently define case-requirement scope."
+    },
+    "prechecks.no_selection_critical_unresolved_conflict": {
+      "derived_from": [
+        "core claims",
+        "claims cited by active S1-S4 checks",
+        "effective support status",
+        "conflicting_evidence_ids"
+      ],
+      "source_nodes": [
+        "semantic_labels",
+        "label_review",
+        "selection_rule_audit"
+      ]
+    },
+    "S1": {
+      "criterion": "At least one primary req_001-req_033 parent and concrete child mapping is supported by usable claims.",
+      "derived_from": [
+        "capability_mapping[].parent_requirement_id",
+        "taxonomy_row",
+        "mapping_status == supported",
+        "mapping claim_ids",
+        "claim support/evidence/conflict state"
+      ],
+      "not_derived_from": [
+        "historical pain_judgment",
+        "number of labels",
+        "auxiliary-only req_034-req_036"
+      ]
+    },
+    "S2": {
+      "criterion": "Episode difficulty is medium/high and its field claim is supported; reviewed low fails; unknown or unreviewed low remains pending.",
+      "derived_from": [
+        "task_attributes.difficulty",
+        "claim field_path",
+        "claim support/evidence/conflict state",
+        "optional accepted review"
+      ],
+      "not_derived_from": [
+        "task success",
+        "conversation length",
+        "historical pain_judgment"
+      ]
+    },
+    "S3": {
+      "criterion": "The same task's goal, object, requirements, constraints, evolution, and scope can be coherently reconstructed.",
+      "derived_from": [
+        "assessment_target",
+        "case_requirements",
+        "feedback_annotations",
+        "task attributes",
+        "supported claims",
+        "exact source evidence",
+        "selection audit"
+      ],
+      "execution": "Historically model-reviewed when pending; final record is a separate selection audit, not a task label."
+    },
+    "S4": {
+      "criterion": "Completion conditions are explicit in user requirements or linked tests, expected outputs, metrics, or checkable standards.",
+      "derived_from": [
+        "requirements",
+        "goal",
+        "user feedback",
+        "output/requirement evidence",
+        "supported claims",
+        "exact source evidence",
+        "selection audit"
+      ],
+      "not_derived_from": [
+        "taxonomy generic acceptance hints",
+        "assistant self-claim",
+        "a generic positive user utterance",
+        "verification burden alone"
+      ]
+    }
+  },
+  "disabled_or_nonsemantic_components": [
+    {
+      "component": "quality_policy.json trace_quality high/medium/low/unknown aggregation",
+      "status": "proposal_not_enabled",
+      "reason": "Policy status is pending_redesign_separate_trace_quality_from_label_support and enabled=false; it did not drive the frozen first-selection results."
+    },
+    {
+      "component": "review_view",
+      "status": "derived_view",
+      "reason": "Selection verifies it equals a deterministic rebuild from labels/claims/evidence and then removes it before semantic checks."
+    },
+    {
+      "component": "Stage 05 report publishing",
+      "status": "presentation_only",
+      "reason": "It formats Stage 04 outputs and is not a semantic dependency for Stage 06."
+    },
+    {
+      "component": "selection score, capacity, coverage quotas",
+      "status": "not_implemented_in_frozen_policy",
+      "reason": "The selector rejects enabled scoring/capacity/quotas."
+    }
+  ],
+  "open_design_questions": [
+    "Freeze canonical taxonomy IDs and enumerations after reviewing the mapping document.",
+    "Define the exact boundary between analyzability quality and per-label evidence support before enabling any trace_quality aggregate.",
+    "Catalog legacy test assertions and the known 123 labeling failures / 58 boundary anomalies before claiming compatibility.",
+    "Choose deterministic ten-session regression sample and freeze its expected layered outputs."
+  ]
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Session Evidence Analysis"
+  short_description: "Analyze canonical sessions to connect user requirements, agent actions, tool results, outc"
+  default_prompt: "Use $session-evidence-analysis to process the supplied session artifacts."

@@ -1,0 +1,542 @@
+schema_version: legacy-to-canonical-label-map-v2
+status: runtime_disposition_baseline
+generated_on: '2026-10-21'
+source_locator: ${TRACE_ANALYSIS_SOURCE}
+relation_types:
+  same_semantics: Same concept and boundary; only contract packaging may change.
+  rename: Same intended concept with a clearer canonical name.
+  derived_view: Recomputed from canonical truth and never independently edited.
+  distinct_semantics: Must remain separate from similarly named fields.
+  deprecated: Historical field is not carried forward as canonical truth.
+  historical_only: Preserved for compatibility and regression, not used as general truth.
+  proposal_not_enabled: Documented proposal that did not drive frozen historical results.
+canonical_namespaces:
+  identity: Stable session, trace, Episode, event, source, and content identities.
+  understanding: User goal, task boundary, requirements, and requirement evolution.
+  execution: Agent actions, requirement outcomes, task outcome, and attribution.
+  evidence: Exact source excerpts, body coverage, conflicts, and retrieval provenance.
+  labels: Task attributes, requirement taxonomy mappings, annotations, and claim support.
+  selection: Versioned policy prechecks, rule checks, and collection decision.
+  audit: Validation, reviewer, run, cache, and export provenance.
+  historical_context: Legacy pain-oriented views retained only when needed.
+mappings:
+- legacy: Stage01 unified_turns[].session_id / trace_id / turn_id / events[].event_id
+  canonical: identity.session_id / trace_id / turn_id / event_id
+  relation: same_semantics
+  used_for_selection: indirectly
+  notes: Preserve native source positions and hashes; identifiers must be stable within a source snapshot.
+  implementation:
+    status: implemented
+    rationale: Stable identities are emitted by the independent ingestion layer.
+    artifact: normalized_session.json
+    field_path: session_id / trace_id / turns[].turn_id / events[].event_id
+    verification: tests/test_ingest.py
+- legacy: Stage01 events[].source, raw_ref
+  canonical: identity.source_ref
+  relation: rename
+  used_for_selection: indirectly
+  notes: Canonical source_ref includes normalized relative locator, record index, physical line when available, and source
+    content digest.
+  implementation:
+    status: implemented
+    rationale: Canonical source snapshot and record/event source locations are emitted during ingestion.
+    artifact: normalized_session.json
+    field_path: source_snapshot / records[].source / events[].source
+    verification: tests/test_ingest.py
+- legacy: Stage02 task_episodes[].episode_boundary
+  canonical: understanding.episode.boundary
+  relation: same_semantics
+  used_for_selection: indirectly
+  notes: Keep judgment, reason, start_turn_id, end_turn_id, and validation issues; boundary identity is versioned.
+  implementation:
+    status: implemented
+    rationale: Episode boundary, window provenance, and reconciliation state are persisted.
+    artifact: episode.json
+    field_path: boundary
+    verification: tests/test_semantic.py
+- legacy: Stage02 domain
+  canonical: understanding.scope.domain_screen
+  relation: rename
+  used_for_selection: false
+  notes: User-side coarse routing is distinct from Stage06 task_attributes.domain_primary/secondary.
+  implementation:
+    status: explicitly_deferred
+    rationale: The early coarse domain screen is not yet represented at runtime; it must remain distinct from final task domains
+      and does not drive the current selector.
+- legacy: Stage02 analysis_value
+  canonical: understanding.analysis_value_screen
+  relation: rename
+  used_for_selection: false
+  notes: Early constructability signal; do not equate with difficulty or final trace quality.
+  implementation:
+    status: explicitly_deferred
+    rationale: The early analysis-value screen is not yet represented at runtime and does not drive the current selector.
+- legacy: Stage02 initial_query
+  canonical: understanding.initial_query
+  relation: same_semantics
+  used_for_selection: indirectly
+  implementation:
+    status: explicitly_deferred
+    rationale: The current Episode goal is a full-Episode reconstruction, not a separately preserved initial query.
+- legacy: Stage02 initial_query_clarity
+  canonical: understanding.initial_query_clarity
+  relation: same_semantics
+  used_for_selection: indirectly
+  notes: Distinct from final S3 coherent reconstructability and S4 completion-condition clarity.
+  implementation:
+    status: explicitly_deferred
+    rationale: Initial-query clarity relative to information available at that turn is not yet modeled; S3/S4 are not substitutes.
+- legacy: Stage02 preliminary_goal.goal
+  canonical: understanding.goal.hypothesis
+  relation: rename
+  used_for_selection: indirectly
+  notes: A user-only hypothesis until full-Episode verification.
+  implementation:
+    status: explicitly_deferred
+    rationale: The current goal is not explicitly split into a user-only hypothesis and a later verified goal.
+- legacy: Stage02 preliminary_goal.requirements[]
+  canonical: understanding.requirements.user_stated[]
+  relation: rename
+  used_for_selection: indirectly
+  notes: Preserve origin and exact user evidence.
+  implementation:
+    status: explicitly_deferred
+    rationale: Requirements exist, but user-stated preliminary requirements and their origins are not yet separated from verified
+      Episode requirements.
+- legacy: Stage02 requirement_evolution
+  canonical: understanding.requirement_evolution
+  relation: same_semantics
+  used_for_selection: indirectly
+  notes: Clarification, correction, and new requirement stay distinct.
+  implementation:
+    status: explicitly_deferred
+    rationale: Clarification, correction, and new-requirement evolution events are not yet materialized.
+- legacy: Stage02 candidate_signals
+  canonical: understanding.user_signals[]
+  relation: rename
+  used_for_selection: false
+  notes: Candidate signals are not confirmed pain and do not attribute fault.
+  implementation:
+    status: explicitly_deferred
+    rationale: User-side candidate signals are not yet materialized; they must not be inferred from failure outcomes.
+- legacy: Stage03 goal_assessment
+  canonical: execution.goal_verification
+  relation: rename
+  used_for_selection: indirectly
+  notes: Records confirmed/revised/insufficient goal and evidence; supersedes but does not erase the user-only hypothesis.
+  implementation:
+    status: explicitly_deferred
+    rationale: Goal verification is not yet a distinct execution artifact and must not be conflated with the canonical Episode
+      goal.
+- legacy: Stage03 requirement_results[]
+  canonical: execution.requirement_results[]
+  relation: same_semantics
+  used_for_selection: indirectly
+  notes: met/partially_met/unmet/unknown is requirement outcome, not requirement validity or taxonomy support.
+  implementation:
+    status: implemented
+    rationale: Evidence-grounded per-requirement outcomes are emitted by evidence analysis.
+    artifact: analysis.json
+    field_path: execution.requirement_results[]
+    verification: tests/test_semantic.py
+- legacy: Stage03 confirmed_requirements[]
+  canonical: understanding.requirements.verified[]
+  relation: rename
+  used_for_selection: indirectly
+  notes: Join user-origin evidence and execution status without conflating them.
+  implementation:
+    status: explicitly_deferred
+    rationale: A verified-requirements projection is not yet materialized or implemented as a deterministic exported view.
+- legacy: Stage03 outcome
+  canonical: execution.task_outcome.evidence_verified_status
+  relation: rename
+  used_for_selection: false
+  notes: completed/partially_completed/failed/unknown is distinct from Agent claims, pain attribution, trace quality, and
+    selection.
+  implementation:
+    status: implemented
+    rationale: Evidence-verified task outcome is stored separately from agent claims.
+    artifact: analysis.json / final_labels.json
+    field_path: execution.verified_outcome.status
+    verification: tests/test_semantic.py
+- legacy: assistant text claiming completion
+  canonical: execution.task_outcome.agent_claimed_status
+  relation: distinct_semantics
+  used_for_selection: false
+  notes: New canonical field only when explicitly extracted; never substitutes for evidence_verified_status.
+  implementation:
+    status: implemented
+    rationale: Agent completion claims are stored separately from verified outcome.
+    artifact: analysis.json / final_labels.json
+    field_path: execution.agent_claimed_status
+    verification: tests/test_semantic.py
+- legacy: Stage03 agent_related
+  canonical: execution.failure_attribution.agent_related
+  relation: same_semantics
+  used_for_selection: false
+  notes: Boolean/null attribution, not success or quality.
+  implementation:
+    status: explicitly_deferred
+    rationale: Agent-related failure attribution is not yet represented; failure outcome alone cannot establish attribution.
+- legacy: Stage03 attribution
+  canonical: execution.failure_attribution.category
+  relation: rename
+  used_for_selection: false
+  notes: Preserve reasoning/response, execution/verification, tool, context, permission, external, user input, unknown distinctions.
+  implementation:
+    status: explicitly_deferred
+    rationale: Failure-attribution category is not yet represented and must be evidence-grounded when added.
+- legacy: Stage03 capability_gaps[]
+  canonical: execution.capability_gaps[]
+  relation: same_semantics
+  used_for_selection: false
+  notes: Failure analysis annotation; do not mix with Stage06 requirement taxonomy mappings.
+  implementation:
+    status: explicitly_deferred
+    rationale: Execution capability gaps are not yet represented and must remain distinct from the user-requirement taxonomy.
+- legacy: Stage04 pain_judgment
+  canonical: historical_context.pain_attribution_status
+  relation: historical_only
+  used_for_selection: input_scope_only
+  notes: confirmed/excluded/review is deterministically based on agent_related and unresolved evidence; it is not task outcome,
+    trace quality, or general selection.
+  implementation:
+    status: historical_only
+    rationale: Pain attribution is retained only as historical regression/input-scope context and is not canonical selector
+      truth.
+    artifact: legacy compatibility inputs
+    field_path: historical Stage04 pain_judgment
+    verification: tests/test_legacy.py
+- legacy: Stage04 judgment_reason_codes
+  canonical: historical_context.pain_attribution_reason_codes
+  relation: historical_only
+  used_for_selection: false
+  implementation:
+    status: historical_only
+    rationale: Pain reason codes are retained only for historical interpretation and do not enter the selector.
+    artifact: legacy compatibility inputs
+    field_path: historical Stage04 judgment_reason_codes
+    verification: tests/test_legacy.py
+- legacy: Stage04 evidence_references / source_references
+  canonical: evidence.refs[] / identity.source_refs[]
+  relation: rename
+  used_for_selection: indirectly
+  notes: Split semantic citations from physical source lineage while retaining their join.
+  implementation:
+    status: implemented
+    rationale: Source identity and continuous-quote evidence references are emitted and audited.
+    artifact: normalized_session.json / analysis.json / final_labels.json
+    field_path: source_snapshot / records[].source / evidence[]
+    verification: tests/test_ingest.py / tests/test_audit.py
+- legacy: Stage06 assessment_target
+  canonical: labels.assessment_target
+  relation: same_semantics
+  used_for_selection: true
+  notes: Defines Episode target, goal, boundary status, and core/noncore requirement partition.
+  implementation:
+    status: explicitly_deferred
+    rationale: Assessment target can be projected from Episode identity, goal, and requirements, but no canonical runtime
+      projection is implemented yet; selection uses stable assessment_id and episode_id directly.
+- legacy: Stage06 case_requirements[]
+  canonical: labels.requirements[]
+  relation: rename
+  used_for_selection: true
+  notes: Stable requirement IDs, text, origin, core status, and requirement evidence.
+  implementation:
+    status: explicitly_deferred
+    rationale: Canonical Episode requirements exist, but the Stage06 case-requirement projection including origin and historical
+      IDs is not yet implemented.
+- legacy: Stage06 task_attributes
+  canonical: labels.task_attributes
+  relation: same_semantics
+  used_for_selection: true
+  notes: Domain/work object may drive configured scope; difficulty drives S2. It is not Stage02 coarse screening.
+  implementation:
+    status: explicitly_deferred
+    rationale: Only difficulty is implemented; domain, work object, dimensions, and factors required by the full Stage06 task_attributes
+      contract are not yet present.
+- legacy: Stage06 task_attributes.difficulty
+  canonical: labels.task_attributes.difficulty
+  relation: same_semantics
+  used_for_selection: true
+  notes: medium/high with a usable supported claim passes S2; reviewed low fails; unknown or unreviewed low remains pending.
+  implementation:
+    status: implemented
+    rationale: Difficulty and its evidence drive deterministic S2 evaluation.
+    artifact: final_labels.json
+    field_path: task_attributes.difficulty / task_attributes.difficulty_evidence_refs
+    verification: tests/test_selection.py
+- legacy: Stage06 capability_mapping[]
+  canonical: labels.requirement_taxonomy_mappings[]
+  relation: rename
+  used_for_selection: true
+  notes: Requirement-to-parent/child taxonomy mapping. Primary and auxiliary-only parent groups remain explicit.
+  implementation:
+    status: implemented
+    rationale: Taxonomy mappings are registry-validated and role is derived from the single taxonomy registry.
+    artifact: final_labels.json
+    field_path: capability_mappings[]
+    verification: tests/test_semantic.py
+- legacy: Stage06 capability_mapping[].mapping_status
+  canonical: labels.requirement_taxonomy_mappings[].mapping_status
+  relation: distinct_semantics
+  used_for_selection: true
+  notes: supported/partial/unresolved describes mapping resolution; it must not be merged with claim support_status.
+  implementation:
+    status: implemented
+    rationale: Mapping support status is represented independently from claim support and requirement outcome.
+    artifact: final_labels.json
+    field_path: capability_mappings[].status
+    verification: tests/test_semantic.py / tests/test_selection.py
+- legacy: Stage06 episode_assessment
+  canonical: labels.episode_assessment
+  relation: same_semantics
+  used_for_selection: indirectly
+  implementation:
+    status: explicitly_deferred
+    rationale: A distinct structured Episode assessment is not yet emitted; verified outcome and S3/S4 do not cover the full
+      historical contract.
+- legacy: Stage06 requirement_assessments[]
+  canonical: labels.requirement_assessments[]
+  relation: same_semantics
+  used_for_selection: indirectly
+  implementation:
+    status: explicitly_deferred
+    rationale: Structured Stage06 requirement assessments are not yet emitted; execution requirement results are related but
+      not declared semantically identical.
+- legacy: Stage06 feedback_annotations[]
+  canonical: labels.feedback_annotations[]
+  relation: same_semantics
+  used_for_selection: indirectly
+  notes: Can inform S3/S4 only through supported claims and evidence.
+  implementation:
+    status: explicitly_deferred
+    rationale: Structured feedback annotations are not yet emitted; evidence and claims must not be relabeled as feedback
+      without explicit semantics.
+- legacy: Stage06 failure_annotations[]
+  canonical: labels.failure_annotations[]
+  relation: same_semantics
+  used_for_selection: indirectly
+  implementation:
+    status: explicitly_deferred
+    rationale: Structured failure annotations are not yet emitted; outcome and attribution remain separate concepts.
+- legacy: Stage06 evidence_refs[]
+  canonical: evidence.refs[]
+  relation: rename
+  used_for_selection: true
+  notes: Each ref must resolve to a provided body and exact source role, turn, locator, Episode membership, and continuous
+    quote.
+  implementation:
+    status: implemented
+    rationale: Evidence contains source snapshot, event, exact continuous quote, purpose, and digest and is audited against
+      source events.
+    artifact: analysis.json / final_labels.json
+    field_path: evidence[]
+    verification: tests/test_semantic.py / tests/test_audit.py
+- legacy: Stage06 claims[]
+  canonical: labels.claims[]
+  relation: same_semantics
+  used_for_selection: true
+  notes: Every claim targets a canonical field_path and assessment scope and carries evidence and conflicts.
+  implementation:
+    status: implemented
+    rationale: Field-targeted claims with support status, evidence, and reasoning are emitted.
+    artifact: final_labels.json
+    field_path: claims[]
+    verification: tests/test_semantic.py
+- legacy: Stage06 claims[].support_status
+  canonical: labels.claims[].support_status
+  relation: distinct_semantics
+  used_for_selection: true
+  notes: supported/partial/unsupported/unknown evaluates evidence support for one field claim, not mapping correctness, trace
+    quality, or selection.
+  implementation:
+    status: implemented
+    rationale: Claim support is represented as a distinct evidence judgment.
+    artifact: final_labels.json
+    field_path: claims[].support_status
+    verification: tests/test_selection.py
+- legacy: Stage06 limitations[]
+  canonical: labels.limitations[]
+  relation: same_semantics
+  used_for_selection: indirectly
+  implementation:
+    status: implemented
+    rationale: Limitations are accumulated across understanding, evidence analysis, and labeling.
+    artifact: episode.json / analysis.json / final_labels.json
+    field_path: limitations[]
+    verification: tests/test_semantic.py
+- legacy: Stage06 review_view
+  canonical: exports.review_view
+  relation: derived_view
+  used_for_selection: false
+  notes: Regenerate from canonical labels/claims/evidence; never persist as an independently editable truth record.
+  implementation:
+    status: explicitly_deferred
+    rationale: No deterministic review-view exporter currently exists; canonical artifacts remain the only persisted truth.
+- legacy: Stage06 review_summary
+  canonical: audit.label_review.summary
+  relation: rename
+  used_for_selection: true
+  notes: model_only/pending_review/human_verified/unresolved is review workflow state, not claim truth by itself.
+  implementation:
+    status: explicitly_deferred
+    rationale: A label-review schema stub exists, but no bound review summary artifact or selector integration is implemented.
+- legacy: Stage06 review.claim_reviews[]
+  canonical: audit.claim_reviews[]
+  relation: same_semantics
+  used_for_selection: true
+  notes: Version/hash-bound reviewer decisions override effective claim support only when accepted and internally consistent.
+  implementation:
+    status: explicitly_deferred
+    rationale: No version/hash-bound claim review event workflow is implemented; models must not claim human verification.
+- legacy: Stage06 quality_results / quality_policy trace_quality
+  canonical: audit.trace_analyzability (future RFC required)
+  relation: proposal_not_enabled
+  used_for_selection: false
+  notes: Do not implement or backfill as historical truth until analyzability is redesigned separately from label support.
+  implementation:
+    status: historical_only
+    rationale: This proposal never drove frozen results and remains disabled pending a separate analyzability RFC.
+    artifact: design record
+    field_path: audit.trace_analyzability future RFC
+    verification: docs/design/legacy-to-canonical-label-map.yaml
+- legacy: Stage06 selection.prechecks.valid_label_and_references
+  canonical: selection.prechecks.contract_and_lineage
+  relation: rename
+  used_for_selection: true
+  notes: Canonical execution should additionally classify errors as invalid rather than merging all processing errors into
+    pending review.
+  implementation:
+    status: implemented
+    rationale: Schema and lineage/reference validity are recomputed from canonical artifacts.
+    artifact: selection_decision.json
+    field_path: prechecks.valid_schema / prechecks.valid_references
+    verification: tests/test_selection.py / tests/test_audit.py
+- legacy: Stage06 selection.prechecks.scope_match
+  canonical: selection.prechecks.scope_match
+  relation: same_semantics
+  used_for_selection: true
+  implementation:
+    status: implemented
+    rationale: Scope match is a dedicated precheck.
+    artifact: selection_decision.json
+    field_path: prechecks.scope_match
+    verification: tests/test_selection.py
+- legacy: Stage06 selection.prechecks.no_selection_critical_unresolved_conflict
+  canonical: selection.prechecks.no_critical_conflict
+  relation: rename
+  used_for_selection: true
+  implementation:
+    status: implemented
+    rationale: Selection-critical conflicts produce a pending precheck.
+    artifact: selection_decision.json
+    field_path: prechecks.no_selection_critical_unresolved_conflict
+    verification: tests/test_selection.py
+- legacy: Stage06 selection.rule_checks.S1
+  canonical: selection.rules.primary_requirement_supported
+  relation: rename
+  used_for_selection: true
+  implementation:
+    status: implemented
+    rationale: S1 is deterministically recomputed from evidence-supported primary taxonomy mappings.
+    artifact: selection_decision.json
+    field_path: rules[rule_id=S1]
+    verification: tests/test_selection.py
+- legacy: Stage06 selection.rule_checks.S2
+  canonical: selection.rules.substantive_challenge
+  relation: rename
+  used_for_selection: true
+  implementation:
+    status: implemented
+    rationale: S2 is deterministically recomputed from reviewed difficulty and policy configuration.
+    artifact: selection_decision.json
+    field_path: rules[rule_id=S2]
+    verification: tests/test_selection.py
+- legacy: Stage06 selection.rule_checks.S3
+  canonical: selection.rules.coherent_task_reconstruction
+  relation: rename
+  used_for_selection: true
+  notes: Separate selection audit, not a semantic task label.
+  implementation:
+    status: implemented
+    rationale: S3 is transferred from an explicit evidence-linked semantic review and normalized by the selector.
+    artifact: selection_decision.json
+    field_path: rules[rule_id=S3]
+    verification: tests/test_selection.py
+- legacy: Stage06 selection.rule_checks.S4
+  canonical: selection.rules.explicit_completion_conditions
+  relation: rename
+  used_for_selection: true
+  notes: Separate selection audit; taxonomy generic criteria and assistant self-claims cannot establish pass.
+  implementation:
+    status: implemented
+    rationale: S4 is transferred from an explicit evidence-linked semantic review and normalized by the selector.
+    artifact: selection_decision.json
+    field_path: rules[rule_id=S4]
+    verification: tests/test_selection.py
+- legacy: Stage06 selection.decision=priority_candidate
+  canonical: selection.decision=selected
+  relation: rename
+  used_for_selection: true
+  implementation:
+    status: implemented
+    rationale: Canonical selected decisions retain the deterministic legacy decision projection.
+    artifact: selection_decision.json
+    field_path: decision=selected / legacy_decision=priority_candidate
+    verification: tests/test_selection.py / tests/test_legacy.py
+- legacy: Stage06 selection.decision=review
+  canonical: selection.decision=pending_review or invalid
+  relation: distinct_semantics
+  used_for_selection: true
+  notes: Split semantic uncertainty from malformed input, broken lineage, path violation, and execution failure.
+  implementation:
+    status: implemented
+    rationale: Legacy review is split into pending versus structurally invalid canonical states.
+    artifact: selection_decision.json
+    field_path: decision=pending_review|invalid / legacy_decision=review
+    verification: tests/test_selection.py
+- legacy: Stage06 selection.decision=not_selected
+  canonical: selection.decision=not_selected
+  relation: same_semantics
+  used_for_selection: true
+  implementation:
+    status: implemented
+    rationale: Canonical rejection preserves the historical decision projection.
+    artifact: selection_decision.json
+    field_path: decision=not_selected / legacy_decision=not_selected
+    verification: tests/test_selection.py
+- legacy: Stage06 selection source_session_id/source_session_path null
+  canonical: identity.source_session required before export
+  relation: deprecated
+  used_for_selection: indirectly
+  notes: Canonical selection/export must join source identity explicitly and validate it before session export.
+  implementation:
+    status: implemented
+    rationale: Source session identity is required, exports are byte-preserving, and export hashes are audited.
+    artifact: normalized_session.json / run_manifest.json / selected_sessions/*.jsonl
+    field_path: session_id / source_snapshot / native_session_export
+    verification: tests/test_pipeline.py / tests/test_audit.py
+non_mergeable_concepts:
+- execution.task_outcome.agent_claimed_status
+- execution.task_outcome.evidence_verified_status
+- historical_context.pain_attribution_status
+- execution.failure_attribution.agent_related
+- labels.requirement_taxonomy_mappings[].mapping_status
+- labels.claims[].support_status
+- audit.trace_analyzability
+- selection.decision
+compatibility_decision_map:
+  priority_candidate: selected
+  review:
+    canonical_targets:
+    - pending_review
+    - invalid
+    split_rule: Malformed input, broken reference/path/provenance, or pipeline failure is invalid; unresolved semantic evidence
+      or rules are pending_review.
+  not_selected: not_selected
+implementation_statuses:
+  implemented: Present in emitted canonical runtime artifacts and covered by executable verification.
+  derived: Produced by implemented deterministic projection from canonical truth; never independently edited.
+  historical_only: Retained only for compatibility, regression, or design history and excluded from canonical selection truth.
+  explicitly_deferred: Not implemented at runtime; rationale records the missing semantic boundary or dependency.

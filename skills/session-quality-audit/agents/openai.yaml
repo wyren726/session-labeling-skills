@@ -1,0 +1,4 @@
+interface:
+  display_name: "Session Quality Audit"
+  short_description: "Audit session-labeling artifacts for schema, evidence, provenance, path safety, forbidden "
+  default_prompt: "Use $session-quality-audit to process the supplied session artifacts."

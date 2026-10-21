@@ -1,0 +1,327 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "final-labels-v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "assessment_id",
+    "session_id",
+    "episode_id",
+    "source_snapshot_id",
+    "evidence",
+    "claims",
+    "capability_mappings",
+    "task_attributes",
+    "semantic_rule_reviews",
+    "execution",
+    "scope_match",
+    "selection_critical_conflicts",
+    "limitations",
+    "validation_issues",
+    "provenance"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "final-labels-v1"
+    },
+    "assessment_id": {
+      "type": "string"
+    },
+    "session_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "episode_id": {
+      "type": "string"
+    },
+    "source_snapshot_id": {
+      "type": "string"
+    },
+    "case_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "evidence_id",
+          "source_snapshot_id",
+          "event_id",
+          "quote",
+          "content_digest"
+        ],
+        "properties": {
+          "evidence_id": {
+            "type": "string"
+          },
+          "source_snapshot_id": {
+            "type": "string"
+          },
+          "event_id": {
+            "type": "string"
+          },
+          "quote": {
+            "type": "string",
+            "minLength": 1
+          },
+          "purpose": {
+            "type": "string"
+          },
+          "content_digest": {
+            "type": "string"
+          },
+          "legacy_locator": {},
+          "legacy_source_role": {}
+        },
+        "additionalProperties": false
+      }
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "claim_id",
+          "support_status",
+          "evidence_refs"
+        ],
+        "properties": {
+          "claim_id": {
+            "type": "string"
+          },
+          "field_path": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "support_status": {
+            "enum": [
+              "supported",
+              "contradicted",
+              "insufficient",
+              "invalid"
+            ]
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "reason": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "legacy_support_status": {}
+        },
+        "additionalProperties": false
+      }
+    },
+    "capability_mappings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "mapping_id",
+          "role",
+          "status",
+          "evidence_refs"
+        ],
+        "properties": {
+          "mapping_id": {
+            "type": "string"
+          },
+          "requirement_id": {
+            "type": "string"
+          },
+          "taxonomy_row": {
+            "type": "integer"
+          },
+          "role": {
+            "enum": [
+              "primary",
+              "auxiliary",
+              "unknown"
+            ]
+          },
+          "status": {
+            "enum": [
+              "supported",
+              "unsupported",
+              "unresolved",
+              "invalid"
+            ]
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "claim_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "reason": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "taxonomy": {
+            "type": "object"
+          },
+          "legacy_mapping_status": {}
+        },
+        "additionalProperties": false
+      }
+    },
+    "task_attributes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "difficulty",
+        "difficulty_evidence_refs"
+      ],
+      "properties": {
+        "difficulty": {
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "unknown"
+          ]
+        },
+        "difficulty_evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "semantic_rule_reviews": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "rule_id",
+          "status",
+          "reason",
+          "evidence_refs"
+        ],
+        "properties": {
+          "rule_id": {
+            "enum": [
+              "S3",
+              "S4"
+            ]
+          },
+          "status": {
+            "enum": [
+              "pass",
+              "fail",
+              "pending",
+              "invalid"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "provenance": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "execution": {
+      "type": "object",
+      "required": [
+        "agent_claimed_status",
+        "verified_outcome",
+        "requirement_results"
+      ],
+      "properties": {
+        "agent_claimed_status": {
+          "enum": [
+            "claimed_complete",
+            "claimed_partial",
+            "claimed_failed",
+            "no_claim",
+            "unknown"
+          ]
+        },
+        "verified_outcome": {
+          "type": "object",
+          "required": [
+            "status"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "success",
+                "partial_success",
+                "failure",
+                "unable_to_verify",
+                "unknown"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "requirement_results": {
+          "type": "array"
+        }
+      },
+      "additionalProperties": false
+    },
+    "scope_match": {
+      "enum": [
+        "pass",
+        "fail",
+        "pending",
+        "invalid"
+      ]
+    },
+    "selection_critical_conflicts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "validation_issues": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "provenance": {
+      "type": "object"
+    }
+  }
+}

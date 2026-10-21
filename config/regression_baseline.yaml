@@ -1,0 +1,13 @@
+schema_version: regression-baseline-v1
+name: four-batch-first-selection-780
+sample_strategy: first_10_sessions_sorted_by_session_id
+candidate_listing: docs/高质量Trace筛选_20260915/selection-summaries/four-batch-first-selection-780-20260920/session_paths__priority_candidate__four_batches_first_selection_780_with_models.jsonl
+artifacts:
+  - labels: workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_101745_38621ee3/06_trace_quality_labeling/trace-label-selection-v6-20260917/labels.jsonl
+    selection: workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_101745_38621ee3/06_trace_quality_labeling/trace-label-selection-v6-20260917/selection-v7-trace-first-20260918-r01/selection.jsonl
+  - labels: workspace/analysis-runs/batch_20260828_162718_1dd984cc/run_20260828_164200_wisland_v1/06_trace_quality_labeling/trace-label-selection-v6-20260917/labels.jsonl
+    selection: workspace/analysis-runs/batch_20260828_162718_1dd984cc/run_20260828_164200_wisland_v1/06_trace_quality_labeling/trace-label-selection-v6-20260917/selection-v7-trace-first-20260918/selection.jsonl
+  - labels: workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260822_episode_boundary_corrected_v4/06_trace_quality_labeling/trace-label-selection-v6-20260917/selection-242-20260920/labels.jsonl
+    selection: workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260822_episode_boundary_corrected_v4/06_trace_quality_labeling/trace-label-selection-v6-20260917/selection-242-20260920/selection-final/selection.jsonl
+  - labels: workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260822_222726_7af71bbc/06_trace_quality_labeling/trace-label-selection-v6-20260917/merged-repairs-20260920/labels.jsonl
+    selection: workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260822_222726_7af71bbc/06_trace_quality_labeling/trace-label-selection-v6-20260917/merged-repairs-20260920/selection-final/selection.jsonl

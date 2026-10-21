@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.venv/
+build/
+dist/
+*.egg-info/
+runs/
+.coverage
+
+# Local provider endpoints and credential environment bindings
+config/providers.yaml

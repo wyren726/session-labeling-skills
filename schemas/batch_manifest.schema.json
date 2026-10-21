@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "batch-manifest-v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "created_at",
+    "input_count",
+    "complete",
+    "failed",
+    "results"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "batch-manifest-v1"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "input_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "complete": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "failed": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "session_id",
+          "status"
+        ],
+        "properties": {
+          "session_id": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "complete",
+              "failed"
+            ]
+          },
+          "run_id": {
+            "type": "string"
+          },
+          "decision_summary": {
+            "type": "object"
+          },
+          "error": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

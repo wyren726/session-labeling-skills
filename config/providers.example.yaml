@@ -1,0 +1,11 @@
+providers:
+  openai_compatible:
+    base_url: https://example.invalid/v1
+    api_key_env: SESSION_LABELING_API_KEY
+    default_model: replace-me
+    allowed_models: []
+    timeout_seconds: 120
+    max_retries: 2
+    requests_per_minute: 30
+    max_completion_tokens: 8192
+    reasoning_effort: null

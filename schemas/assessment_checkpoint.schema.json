@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "assessment-checkpoint-v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "signature",
+    "assessment_id",
+    "episode_id",
+    "status"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "assessment-checkpoint-v1"
+    },
+    "signature": {
+      "type": "string"
+    },
+    "assessment_id": {
+      "type": "string"
+    },
+    "episode_id": {
+      "type": "string"
+    },
+    "status": {
+      "const": "complete"
+    }
+  }
+}

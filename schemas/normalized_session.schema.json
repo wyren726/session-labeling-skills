@@ -1,0 +1,434 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "normalized-session-v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "session_id",
+    "source_snapshot",
+    "records",
+    "turn_ids",
+    "turns",
+    "events",
+    "ingestion_report"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "normalized-session-v1"
+    },
+    "session_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_snapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_snapshot_id",
+        "sha256",
+        "size_bytes",
+        "record_count",
+        "parsed_record_count",
+        "parse_errors",
+        "adapter",
+        "adapter_version"
+      ],
+      "properties": {
+        "source_snapshot_id": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "size_bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "record_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "parsed_record_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "parse_errors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "line_number",
+              "byte_offset",
+              "error_type",
+              "error"
+            ],
+            "properties": {
+              "line_number": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "byte_offset": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "error_type": {
+                "type": "string"
+              },
+              "error": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "adapter": {
+          "const": "session_jsonl"
+        },
+        "adapter_version": {
+          "type": "string"
+        }
+      }
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "record_id",
+          "session_id",
+          "record_type",
+          "native_uuid",
+          "parent_native_uuid",
+          "parent_record_id",
+          "turn_id",
+          "line_number",
+          "byte_offset",
+          "timestamp",
+          "raw_sha256",
+          "redaction_count",
+          "payload"
+        ],
+        "properties": {
+          "record_id": {
+            "type": "string"
+          },
+          "session_id": {
+            "type": "string"
+          },
+          "record_type": {
+            "type": "string"
+          },
+          "native_uuid": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "parent_native_uuid": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "parent_record_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "turn_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "line_number": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "byte_offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "timestamp": {
+            "type": [
+              "string",
+              "number",
+              "null"
+            ]
+          },
+          "raw_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "redaction_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "payload": {}
+        }
+      }
+    },
+    "turn_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "turns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "turn_id",
+          "native_prompt_id",
+          "root_record_id",
+          "status",
+          "record_ids",
+          "event_ids"
+        ],
+        "properties": {
+          "turn_id": {
+            "type": "string"
+          },
+          "native_prompt_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "root_record_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "enum": [
+              "completed",
+              "incomplete",
+              "error"
+            ]
+          },
+          "record_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "event_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "schema_version",
+          "event_id",
+          "session_id",
+          "turn_id",
+          "sequence",
+          "timestamp",
+          "type",
+          "data",
+          "links",
+          "source_ref"
+        ],
+        "properties": {
+          "schema_version": {
+            "const": "event-v1"
+          },
+          "event_id": {
+            "type": "string"
+          },
+          "session_id": {
+            "type": "string"
+          },
+          "turn_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sequence": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "timestamp": {
+            "type": [
+              "string",
+              "number",
+              "null"
+            ]
+          },
+          "type": {
+            "enum": [
+              "user_message",
+              "assistant_message",
+              "reasoning",
+              "tool_call",
+              "tool_result",
+              "model_call",
+              "model_result",
+              "token_usage",
+              "error",
+              "attachment",
+              "system_event",
+              "unknown"
+            ]
+          },
+          "data": {},
+          "links": {
+            "type": "object"
+          },
+          "source_ref": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "source_snapshot_id",
+              "record_id",
+              "record_index",
+              "line_number",
+              "adapter",
+              "adapter_version",
+              "native_uuid",
+              "parent_record_id"
+            ],
+            "properties": {
+              "source_snapshot_id": {
+                "type": "string"
+              },
+              "record_id": {
+                "type": "string"
+              },
+              "record_index": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "line_number": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "adapter": {
+                "const": "session_jsonl"
+              },
+              "adapter_version": {
+                "type": "string"
+              },
+              "native_uuid": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "parent_record_id": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "ingestion_report": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "record_types_seen",
+        "record_types_preserved",
+        "block_types_seen",
+        "event_types_emitted",
+        "unknown_event_count",
+        "orphan_attachment_record_ids",
+        "unmatched_tool_call_event_ids",
+        "unmatched_tool_result_event_ids",
+        "turnless_substantive_event_ids",
+        "redaction_count",
+        "warnings"
+      ],
+      "properties": {
+        "record_types_seen": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "record_types_preserved": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "block_types_seen": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "event_types_emitted": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "unknown_event_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "orphan_attachment_record_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "unmatched_tool_call_event_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "unmatched_tool_result_event_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "turnless_substantive_event_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "redaction_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

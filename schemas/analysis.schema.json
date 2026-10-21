@@ -1,0 +1,196 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "analysis-v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "analysis_id",
+    "assessment_id",
+    "session_id",
+    "episode_id",
+    "source_snapshot_id",
+    "evidence",
+    "execution",
+    "limitations",
+    "validation_issues",
+    "provenance"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "analysis-v1"
+    },
+    "analysis_id": {
+      "type": "string"
+    },
+    "assessment_id": {
+      "type": "string"
+    },
+    "session_id": {
+      "type": "string"
+    },
+    "episode_id": {
+      "type": "string"
+    },
+    "source_snapshot_id": {
+      "type": "string"
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/evidence"
+      }
+    },
+    "execution": {
+      "$ref": "#/$defs/execution"
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "validation_issues": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "provenance": {
+      "$ref": "#/$defs/provenance"
+    }
+  },
+  "$defs": {
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidence_id",
+        "source_snapshot_id",
+        "event_id",
+        "quote",
+        "purpose",
+        "content_digest"
+      ],
+      "properties": {
+        "evidence_id": {
+          "type": "string"
+        },
+        "source_snapshot_id": {
+          "type": "string"
+        },
+        "event_id": {
+          "type": "string"
+        },
+        "quote": {
+          "type": "string",
+          "minLength": 1
+        },
+        "purpose": {
+          "type": "string"
+        },
+        "content_digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "agent_claimed_status",
+        "verified_outcome",
+        "requirement_results"
+      ],
+      "properties": {
+        "agent_claimed_status": {
+          "enum": [
+            "claimed_complete",
+            "claimed_partial",
+            "claimed_failed",
+            "no_claim",
+            "unknown"
+          ]
+        },
+        "verified_outcome": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "success",
+                "partial_success",
+                "failure",
+                "unable_to_verify",
+                "unknown"
+              ]
+            }
+          }
+        },
+        "requirement_results": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "requirement_id",
+              "status",
+              "evidence_refs",
+              "reason"
+            ],
+            "properties": {
+              "requirement_id": {
+                "type": "string"
+              },
+              "status": {
+                "enum": [
+                  "met",
+                  "partially_met",
+                  "unmet",
+                  "unknown"
+                ]
+              },
+              "evidence_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "reason": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "producer_skill",
+        "producer_version",
+        "method",
+        "source_snapshot_id"
+      ],
+      "properties": {
+        "producer_skill": {
+          "type": "string"
+        },
+        "producer_version": {
+          "type": "string"
+        },
+        "method": {
+          "type": "string"
+        },
+        "source_snapshot_id": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

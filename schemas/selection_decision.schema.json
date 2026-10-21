@@ -1,0 +1,142 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "selection-decision-v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "selection_id",
+    "assessment_id",
+    "policy_id",
+    "policy_version",
+    "prechecks",
+    "rules",
+    "decision",
+    "legacy_decision",
+    "issues"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "selection-decision-v1"
+    },
+    "selection_id": {
+      "type": "string"
+    },
+    "assessment_id": {
+      "type": "string"
+    },
+    "policy_id": {
+      "type": "string"
+    },
+    "policy_version": {
+      "type": "string"
+    },
+    "prechecks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "valid_schema",
+        "valid_references",
+        "scope_match",
+        "no_selection_critical_unresolved_conflict"
+      ],
+      "properties": {
+        "valid_schema": {
+          "enum": [
+            "pass",
+            "fail",
+            "pending",
+            "invalid"
+          ]
+        },
+        "valid_references": {
+          "enum": [
+            "pass",
+            "fail",
+            "pending",
+            "invalid"
+          ]
+        },
+        "scope_match": {
+          "enum": [
+            "pass",
+            "fail",
+            "pending",
+            "invalid"
+          ]
+        },
+        "no_selection_critical_unresolved_conflict": {
+          "enum": [
+            "pass",
+            "fail",
+            "pending",
+            "invalid"
+          ]
+        }
+      }
+    },
+    "rules": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "rule_id",
+          "status",
+          "reason",
+          "evidence_refs"
+        ],
+        "properties": {
+          "rule_id": {
+            "enum": [
+              "S1",
+              "S2",
+              "S3",
+              "S4"
+            ]
+          },
+          "status": {
+            "enum": [
+              "pass",
+              "fail",
+              "pending",
+              "invalid"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "decision": {
+      "enum": [
+        "selected",
+        "not_selected",
+        "pending_review",
+        "invalid"
+      ]
+    },
+    "legacy_decision": {
+      "enum": [
+        "priority_candidate",
+        "review",
+        "not_selected"
+      ]
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

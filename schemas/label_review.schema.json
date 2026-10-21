@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "label-review-v1",
+  "type": "object",
+  "required": [
+    "review_id",
+    "reviewer_type",
+    "status",
+    "evidence_refs"
+  ],
+  "properties": {
+    "reviewer_type": {
+      "enum": [
+        "program",
+        "model",
+        "human"
+      ]
+    },
+    "status": {
+      "enum": [
+        "accepted",
+        "rejected",
+        "pending",
+        "invalid"
+      ]
+    }
+  }
+}

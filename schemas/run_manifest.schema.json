@@ -1,0 +1,247 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "run-manifest-v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "run_id",
+    "signature",
+    "status",
+    "created_at",
+    "input",
+    "assessments",
+    "decision_summary",
+    "exported_native_session",
+    "artifacts",
+    "versions",
+    "config_hashes",
+    "model",
+    "code_revision"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "run-manifest-v1"
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "signature": {
+      "type": "string"
+    },
+    "status": {
+      "const": "complete"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "locator",
+        "session_id",
+        "source_snapshot_id",
+        "sha256"
+      ],
+      "properties": {
+        "locator": {
+          "type": "string"
+        },
+        "session_id": {
+          "type": "string"
+        },
+        "source_snapshot_id": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "assessments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "assessment_id",
+          "episode_id",
+          "decision",
+          "path"
+        ],
+        "properties": {
+          "assessment_id": {
+            "type": "string"
+          },
+          "episode_id": {
+            "type": "string"
+          },
+          "decision": {
+            "enum": [
+              "selected",
+              "not_selected",
+              "pending_review",
+              "invalid"
+            ]
+          },
+          "path": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "decision_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "selected",
+        "not_selected",
+        "pending_review",
+        "invalid"
+      ],
+      "properties": {
+        "selected": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "not_selected": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "pending_review": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "invalid": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "exported_native_session": {
+      "type": "boolean"
+    },
+    "artifacts": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256",
+          "size_bytes",
+          "kind"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "size_bytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "kind": {
+            "enum": [
+              "artifact",
+              "checkpoint",
+              "native_session_export"
+            ]
+          }
+        }
+      }
+    },
+    "versions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pipeline",
+        "taxonomy",
+        "selection_policy"
+      ],
+      "properties": {
+        "pipeline": {
+          "type": "string"
+        },
+        "taxonomy": {
+          "type": "string"
+        },
+        "selection_policy": {
+          "type": "string"
+        }
+      }
+    },
+    "config_hashes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "taxonomy_sha256",
+        "selection_policy_sha256",
+        "resource_bundle_sha256"
+      ],
+      "properties": {
+        "taxonomy_sha256": {
+          "type": "string"
+        },
+        "selection_policy_sha256": {
+          "type": "string"
+        },
+        "resource_bundle_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "model": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provider",
+        "model"
+      ],
+      "properties": {
+        "provider": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "model": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "code_revision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "commit",
+        "state"
+      ],
+      "properties": {
+        "commit": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "state": {
+          "enum": [
+            "declared",
+            "uncommitted"
+          ]
+        }
+      }
+    }
+  }
+}

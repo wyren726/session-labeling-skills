@@ -1,0 +1,4 @@
+interface:
+  display_name: "Session Labeling Pipeline"
+  short_description: "Orchestrate the end-to-end native-session labeling workflow, including ingestion, analysis"
+  default_prompt: "Use $session-labeling-pipeline to process the supplied session artifacts."

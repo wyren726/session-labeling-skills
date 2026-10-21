@@ -1,0 +1,4 @@
+interface:
+  display_name: "Session Quality Labeling"
+  short_description: "Generate canonical quality labels from versioned session analysis using the shared taxonom"
+  default_prompt: "Use $session-quality-labeling to process the supplied session artifacts."

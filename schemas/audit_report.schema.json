@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "audit-report-v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "mode",
+    "files_scanned",
+    "forbidden_path_hits",
+    "forbidden_runtime_imports",
+    "read_errors",
+    "checks",
+    "issues",
+    "warnings",
+    "valid"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "audit-report-v1"
+    },
+    "mode": {
+      "enum": [
+        "repository",
+        "run"
+      ]
+    },
+    "files_scanned": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "forbidden_path_hits": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "forbidden_runtime_imports": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "read_errors": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "checks": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "boolean"
+      }
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "valid": {
+      "type": "boolean"
+    }
+  }
+}

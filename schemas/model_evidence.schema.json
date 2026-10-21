@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "evidence",
+    "agent_claimed_status",
+    "verified_outcome",
+    "requirement_results"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "evidence_id",
+          "event_id",
+          "quote",
+          "purpose"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "evidence_id": {
+            "type": "string"
+          },
+          "event_id": {
+            "type": "string"
+          },
+          "quote": {
+            "type": "string"
+          },
+          "purpose": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "agent_claimed_status": {
+      "enum": [
+        "claimed_complete",
+        "claimed_partial",
+        "claimed_failed",
+        "no_claim",
+        "unknown"
+      ]
+    },
+    "verified_outcome": {
+      "enum": [
+        "success",
+        "partial_success",
+        "failure",
+        "unable_to_verify",
+        "unknown"
+      ]
+    },
+    "requirement_results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "requirement_id",
+          "status",
+          "evidence_refs",
+          "reason"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "requirement_id": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "met",
+              "partially_met",
+              "unmet",
+              "unknown"
+            ]
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "reason": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Session Quality Selection"
+  short_description: "Apply the canonical S1–S4 policy and deterministic decision table to validated labels. Use"
+  default_prompt: "Use $session-quality-selection to process the supplied session artifacts."

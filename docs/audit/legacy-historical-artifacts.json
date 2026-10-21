@@ -1,0 +1,1961 @@
+{
+  "schema_version": "legacy-historical-artifact-inventory-v1",
+  "generated_at": "2026-10-20T14:28:02.194521+00:00",
+  "source_locator": "${TRACE_ANALYSIS_SOURCE}",
+  "method": "Filesystem metadata plus parsed JSON manifests; no model calls and no source artifacts modified.",
+  "batches": [
+    {
+      "batch_id": "batch_20260813_192525_e45d808e",
+      "files": [
+        {
+          "path": "preprocessed/batch_20260813_192525_e45d808e/rejected_records.jsonl",
+          "bytes": 0
+        },
+        {
+          "path": "preprocessed/batch_20260813_192525_e45d808e/unified_traces.jsonl",
+          "bytes": 1969998625
+        },
+        {
+          "path": "preprocessed/batch_20260813_192525_e45d808e/unified_turns.jsonl",
+          "bytes": 693133758
+        }
+      ]
+    },
+    {
+      "batch_id": "batch_20260820_183932_0042242a",
+      "files": [
+        {
+          "path": "preprocessed/batch_20260820_183932_0042242a/rejected_records.jsonl",
+          "bytes": 0
+        },
+        {
+          "path": "preprocessed/batch_20260820_183932_0042242a/source_files_manifest.json",
+          "bytes": 710500
+        },
+        {
+          "path": "preprocessed/batch_20260820_183932_0042242a/unified_traces.jsonl",
+          "bytes": 8323263500
+        },
+        {
+          "path": "preprocessed/batch_20260820_183932_0042242a/unified_turns.jsonl",
+          "bytes": 3170635376
+        },
+        {
+          "path": "preprocessed/batch_20260820_183932_0042242a/user_turns__batch_20260820_183932_0042242a.jsonl",
+          "bytes": 20750189
+        },
+        {
+          "path": "preprocessed/batch_20260820_183932_0042242a/user_turns_manifest.json",
+          "bytes": 701
+        }
+      ]
+    },
+    {
+      "batch_id": "batch_20260822_184756_50ad9a83",
+      "files": [
+        {
+          "path": "preprocessed/batch_20260822_184756_50ad9a83/rejected_records.jsonl",
+          "bytes": 0
+        },
+        {
+          "path": "preprocessed/batch_20260822_184756_50ad9a83/unified_traces.jsonl",
+          "bytes": 25344205636
+        },
+        {
+          "path": "preprocessed/batch_20260822_184756_50ad9a83/unified_turns.jsonl",
+          "bytes": 8657325053
+        },
+        {
+          "path": "preprocessed/batch_20260822_184756_50ad9a83/user_turns__batch_20260822_184756_50ad9a83.jsonl",
+          "bytes": 70867257
+        },
+        {
+          "path": "preprocessed/batch_20260822_184756_50ad9a83/user_turns_manifest.json",
+          "bytes": 701
+        }
+      ]
+    },
+    {
+      "batch_id": "batch_20260828_162718_1dd984cc",
+      "files": [
+        {
+          "path": "preprocessed/batch_20260828_162718_1dd984cc/rejected_records.jsonl",
+          "bytes": 0
+        },
+        {
+          "path": "preprocessed/batch_20260828_162718_1dd984cc/unified_traces.jsonl",
+          "bytes": 3162182098
+        },
+        {
+          "path": "preprocessed/batch_20260828_162718_1dd984cc/unified_turns.jsonl",
+          "bytes": 1198557990
+        },
+        {
+          "path": "preprocessed/batch_20260828_162718_1dd984cc/user_turns__batch_20260828_162718_1dd984cc.jsonl",
+          "bytes": 10758876
+        },
+        {
+          "path": "preprocessed/batch_20260828_162718_1dd984cc/user_turns_manifest.json",
+          "bytes": 699
+        }
+      ]
+    }
+  ],
+  "manifests": [
+    {
+      "path": "workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260818_160511_fa95acba/02_analyze/manifest.json",
+      "bytes": 1528,
+      "sha256": "f10769d997d530a3ff41659709ea54d5e1c47e1c5b12f6ab4d66419012ab2fa3",
+      "manifest": {
+        "manifest_version": "1.0",
+        "analysis_run_id": "run_20260818_160511_fa95acba",
+        "batch_id": "batch_20260813_192525_e45d808e",
+        "batch_path": "${TRACE_ANALYSIS_SOURCE}/preprocessed/batch_20260813_192525_e45d808e",
+        "stage": "02_analyze",
+        "status": "partial",
+        "provider": "pjlab_proxy",
+        "model": "glm-5.2-1m",
+        "prompt_version": "trace-needs-pain-v1",
+        "selection_prompt_version": "trace-evidence-selection-v1",
+        "total_trace_count": 764,
+        "target_trace_count": 764,
+        "selected_trace_count": 1,
+        "selection": "explicit_trace_ids",
+        "completed_trace_count": 1,
+        "failed_trace_count": 0,
+        "model_call_count": 1,
+        "strategy_counts": {
+          "direct": 1
+        },
+        "usage": {
+          "prompt_tokens": 16404,
+          "completion_tokens": 2187,
+          "total_tokens": 18591
+        },
+        "output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260818_160511_fa95acba/02_analyze/trace_analysis__batch_20260813_192525_e45d808e__run_20260818_160511_fa95acba.jsonl",
+        "errors_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260818_160511_fa95acba/02_analyze/errors.jsonl",
+        "progress_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260818_160511_fa95acba/02_analyze/progress.jsonl",
+        "updated_at": "2026-08-18T16:11:34.423631+08:00"
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260818_160511_fa95acba/03_export/manifest.json",
+      "bytes": 2250,
+      "sha256": "0670f1216162f57eee571d59432e83fd8b1dcdbd33f37cf6e44687469d95e3cb",
+      "manifest": {
+        "manifest_version": "1.0",
+        "stage": "03_export",
+        "status": "partial",
+        "schema_version": "1.0",
+        "batch_id": "batch_20260813_192525_e45d808e",
+        "analysis_run_id": "run_20260818_160511_fa95acba",
+        "trace_count": 1,
+        "needs_review_trace_count": 1,
+        "requirement_count": 4,
+        "pain_episode_count": 0,
+        "agent_related_pain_count": 0,
+        "capability_gap_count": 0,
+        "generated_at": "2026-08-18T16:11:43.165498+08:00",
+        "input_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260818_160511_fa95acba/02_analyze/trace_analysis__batch_20260813_192525_e45d808e__run_20260818_160511_fa95acba.jsonl",
+        "output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260818_160511_fa95acba/03_export",
+        "artifacts": [
+          "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260818_160511_fa95acba/03_export/requirements.jsonl",
+          "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260818_160511_fa95acba/03_export/pain_episodes.jsonl",
+          "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260818_160511_fa95acba/03_export/capability_gaps.jsonl",
+          "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260818_160511_fa95acba/03_export/capability_requirement_distribution.jsonl",
+          "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260818_160511_fa95acba/03_export/capability_gap_distribution.jsonl",
+          "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260818_160511_fa95acba/03_export/model_harness_provider_summary.jsonl",
+          "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260818_160511_fa95acba/03_export/summary.jsonl"
+        ]
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260818_161329_33fab377/02_analyze/manifest.json",
+      "bytes": 1528,
+      "sha256": "6427a92b131273f44270d8f74c4844bbc9a88e53bf86fc3009879b138409cb6b",
+      "manifest": {
+        "manifest_version": "1.0",
+        "analysis_run_id": "run_20260818_161329_33fab377",
+        "batch_id": "batch_20260813_192525_e45d808e",
+        "batch_path": "${TRACE_ANALYSIS_SOURCE}/preprocessed/batch_20260813_192525_e45d808e",
+        "stage": "02_analyze",
+        "status": "partial",
+        "provider": "pjlab_proxy",
+        "model": "glm-5.2-1m",
+        "prompt_version": "trace-needs-pain-v2",
+        "selection_prompt_version": "trace-evidence-selection-v2",
+        "total_trace_count": 764,
+        "target_trace_count": 764,
+        "selected_trace_count": 1,
+        "selection": "explicit_trace_ids",
+        "completed_trace_count": 1,
+        "failed_trace_count": 0,
+        "model_call_count": 1,
+        "strategy_counts": {
+          "direct": 1
+        },
+        "usage": {
+          "prompt_tokens": 16050,
+          "completion_tokens": 1953,
+          "total_tokens": 18003
+        },
+        "output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260818_161329_33fab377/02_analyze/trace_analysis__batch_20260813_192525_e45d808e__run_20260818_161329_33fab377.jsonl",
+        "errors_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260818_161329_33fab377/02_analyze/errors.jsonl",
+        "progress_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260818_161329_33fab377/02_analyze/progress.jsonl",
+        "updated_at": "2026-08-18T16:14:38.692106+08:00"
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260818_161329_33fab377/03_export/manifest.json",
+      "bytes": 2250,
+      "sha256": "948ccbdc50ec7de6ac0324c8221554bbb2c431a36b48a7b6b51c6769b75aa542",
+      "manifest": {
+        "manifest_version": "1.0",
+        "stage": "03_export",
+        "status": "partial",
+        "schema_version": "1.0",
+        "batch_id": "batch_20260813_192525_e45d808e",
+        "analysis_run_id": "run_20260818_161329_33fab377",
+        "trace_count": 1,
+        "needs_review_trace_count": 0,
+        "requirement_count": 4,
+        "pain_episode_count": 0,
+        "agent_related_pain_count": 0,
+        "capability_gap_count": 0,
+        "generated_at": "2026-08-18T16:14:47.113090+08:00",
+        "input_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260818_161329_33fab377/02_analyze/trace_analysis__batch_20260813_192525_e45d808e__run_20260818_161329_33fab377.jsonl",
+        "output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260818_161329_33fab377/03_export",
+        "artifacts": [
+          "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260818_161329_33fab377/03_export/requirements.jsonl",
+          "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260818_161329_33fab377/03_export/pain_episodes.jsonl",
+          "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260818_161329_33fab377/03_export/capability_gaps.jsonl",
+          "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260818_161329_33fab377/03_export/capability_requirement_distribution.jsonl",
+          "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260818_161329_33fab377/03_export/capability_gap_distribution.jsonl",
+          "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260818_161329_33fab377/03_export/model_harness_provider_summary.jsonl",
+          "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260818_161329_33fab377/03_export/summary.jsonl"
+        ]
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260818_172926_88d77fe6/02_analyze/manifest.json",
+      "bytes": 1531,
+      "sha256": "6ee8fc297e71672eae6817a36dbbda04b2ab6b68d75ef913046701d917b865c3",
+      "manifest": {
+        "manifest_version": "1.0",
+        "analysis_run_id": "run_20260818_172926_88d77fe6",
+        "batch_id": "batch_20260813_192525_e45d808e",
+        "batch_path": "${TRACE_ANALYSIS_SOURCE}/preprocessed/batch_20260813_192525_e45d808e",
+        "stage": "02_analyze",
+        "status": "interrupted",
+        "provider": "pjlab_proxy",
+        "model": "glm-5.2-1m",
+        "prompt_version": "trace-user-pain-v3",
+        "attribution_prompt_version": "trace-agent-attribution-v1",
+        "total_trace_count": 764,
+        "target_trace_count": 764,
+        "selected_trace_count": 764,
+        "selection": "all_pending",
+        "completed_trace_count": 9,
+        "failed_trace_count": 0,
+        "model_call_count": 9,
+        "strategy_counts": {
+          "user_only": 9
+        },
+        "usage": {
+          "prompt_tokens": 13920,
+          "completion_tokens": 33367,
+          "total_tokens": 47287
+        },
+        "output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260818_172926_88d77fe6/02_analyze/trace_analysis__batch_20260813_192525_e45d808e__run_20260818_172926_88d77fe6.jsonl",
+        "errors_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260818_172926_88d77fe6/02_analyze/errors.jsonl",
+        "progress_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260818_172926_88d77fe6/02_analyze/progress.jsonl",
+        "updated_at": "2026-08-18T17:33:16.153412+08:00"
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260818_173502_83f3dd08/02_analyze/manifest.json",
+      "bytes": 1623,
+      "sha256": "bbebacd6dcd49f704feed622d85f98237c3b31658a7114a27b5d1cd30006e4c7",
+      "manifest": {
+        "manifest_version": "1.0",
+        "analysis_run_id": "run_20260818_173502_83f3dd08",
+        "batch_id": "batch_20260813_192525_e45d808e",
+        "batch_path": "${TRACE_ANALYSIS_SOURCE}/preprocessed/batch_20260813_192525_e45d808e",
+        "stage": "02_analyze",
+        "status": "interrupted",
+        "provider": "pjlab_proxy",
+        "model": "glm-5.2-1m",
+        "prompt_version": "trace-user-pain-v3",
+        "attribution_prompt_version": "trace-agent-attribution-v1",
+        "model_parameters": {
+          "reasoning_effort": "low",
+          "max_completion_tokens": 8192
+        },
+        "total_trace_count": 764,
+        "target_trace_count": 764,
+        "selected_trace_count": 764,
+        "selection": "all_pending",
+        "completed_trace_count": 3,
+        "failed_trace_count": 0,
+        "model_call_count": 3,
+        "strategy_counts": {
+          "user_only": 3
+        },
+        "usage": {
+          "prompt_tokens": 4731,
+          "completion_tokens": 8143,
+          "total_tokens": 12874
+        },
+        "output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260818_173502_83f3dd08/02_analyze/trace_analysis__batch_20260813_192525_e45d808e__run_20260818_173502_83f3dd08.jsonl",
+        "errors_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260818_173502_83f3dd08/02_analyze/errors.jsonl",
+        "progress_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260818_173502_83f3dd08/02_analyze/progress.jsonl",
+        "updated_at": "2026-08-18T17:36:40.981712+08:00"
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260818_174121_832714e2/02_analyze/manifest.json",
+      "bytes": 1616,
+      "sha256": "bbb7368ea113818ac1da4444c52e459402eda90975349327da8f779f9a664992",
+      "manifest": {
+        "manifest_version": "1.0",
+        "analysis_run_id": "run_20260818_174121_832714e2",
+        "batch_id": "batch_20260813_192525_e45d808e",
+        "batch_path": "${TRACE_ANALYSIS_SOURCE}/preprocessed/batch_20260813_192525_e45d808e",
+        "stage": "02_analyze",
+        "status": "interrupted",
+        "provider": "pjlab_proxy",
+        "model": "glm-5.2",
+        "prompt_version": "trace-user-pain-v3",
+        "attribution_prompt_version": "trace-agent-attribution-v1",
+        "model_parameters": {
+          "reasoning_effort": "low",
+          "max_completion_tokens": 8192
+        },
+        "total_trace_count": 764,
+        "target_trace_count": 764,
+        "selected_trace_count": 16,
+        "selection": "all_pending",
+        "completed_trace_count": 1,
+        "failed_trace_count": 0,
+        "model_call_count": 1,
+        "strategy_counts": {
+          "user_only": 1
+        },
+        "usage": {
+          "prompt_tokens": 816,
+          "completion_tokens": 488,
+          "total_tokens": 1304
+        },
+        "output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260818_174121_832714e2/02_analyze/trace_analysis__batch_20260813_192525_e45d808e__run_20260818_174121_832714e2.jsonl",
+        "errors_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260818_174121_832714e2/02_analyze/errors.jsonl",
+        "progress_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260818_174121_832714e2/02_analyze/progress.jsonl",
+        "updated_at": "2026-08-18T17:44:38.221630+08:00"
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260818_174613_274ae9c4/02_analyze/manifest.json",
+      "bytes": 1623,
+      "sha256": "2cb7f351defc7242273fcfe8f28d5e362318a7f23ae837775415772587007e0a",
+      "manifest": {
+        "manifest_version": "1.0",
+        "analysis_run_id": "run_20260818_174613_274ae9c4",
+        "batch_id": "batch_20260813_192525_e45d808e",
+        "batch_path": "${TRACE_ANALYSIS_SOURCE}/preprocessed/batch_20260813_192525_e45d808e",
+        "stage": "02_analyze",
+        "status": "interrupted",
+        "provider": "pjlab_proxy",
+        "model": "glm-5.2-1m",
+        "prompt_version": "trace-user-pain-v3",
+        "attribution_prompt_version": "trace-agent-attribution-v1",
+        "model_parameters": {
+          "reasoning_effort": "low",
+          "max_completion_tokens": 8192
+        },
+        "total_trace_count": 764,
+        "target_trace_count": 764,
+        "selected_trace_count": 752,
+        "selection": "all_pending",
+        "completed_trace_count": 13,
+        "failed_trace_count": 0,
+        "model_call_count": 1,
+        "strategy_counts": {
+          "user_only": 1
+        },
+        "usage": {
+          "prompt_tokens": 1018,
+          "completion_tokens": 1988,
+          "total_tokens": 3006
+        },
+        "output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260818_174613_274ae9c4/02_analyze/trace_analysis__batch_20260813_192525_e45d808e__run_20260818_174613_274ae9c4.jsonl",
+        "errors_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260818_174613_274ae9c4/02_analyze/errors.jsonl",
+        "progress_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260818_174613_274ae9c4/02_analyze/progress.jsonl",
+        "updated_at": "2026-08-18T19:23:46.113663+08:00"
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_100011_8b8f8d0f/02_analyze/manifest.json",
+      "bytes": 1908,
+      "sha256": "bc4e8c088f1935ab6e7e6f1c66c411e370053398a14e9320062aac3418c052e5",
+      "manifest": {
+        "manifest_version": "1.0",
+        "analysis_run_id": "run_20260819_100011_8b8f8d0f",
+        "batch_id": "batch_20260813_192525_e45d808e",
+        "batch_path": "${TRACE_ANALYSIS_SOURCE}/preprocessed/batch_20260813_192525_e45d808e",
+        "stage": "02_analyze",
+        "status": "interrupted",
+        "provider": "pjlab_proxy",
+        "model": "glm-5.2",
+        "prompt_version": "trace-user-screen-rubrics-v1",
+        "attribution_prompt_version": "trace-agent-verification-v2",
+        "model_parameters": {
+          "reasoning_effort": "low",
+          "max_completion_tokens": 8192
+        },
+        "total_trace_count": 764,
+        "target_trace_count": 764,
+        "selected_trace_count": 5,
+        "selection": "all_pending",
+        "completed_trace_count": 1,
+        "failed_trace_count": 0,
+        "model_call_count": 1,
+        "strategy_counts": {
+          "user_screen_only": 1
+        },
+        "usage": {
+          "prompt_tokens": 1446,
+          "completion_tokens": 1036,
+          "total_tokens": 2482
+        },
+        "user_screen_output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_100011_8b8f8d0f/02_analyze/user_screen__batch_20260813_192525_e45d808e__run_20260819_100011_8b8f8d0f.jsonl",
+        "output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_100011_8b8f8d0f/02_analyze/trace_analysis__batch_20260813_192525_e45d808e__run_20260819_100011_8b8f8d0f.jsonl",
+        "errors_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_100011_8b8f8d0f/02_analyze/errors.jsonl",
+        "progress_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_100011_8b8f8d0f/02_analyze/progress.jsonl",
+        "updated_at": "2026-08-19T10:08:04.706588+08:00"
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_100823_320e8be7/02_analyze/manifest.json",
+      "bytes": 1907,
+      "sha256": "c6b312e804696d6f5771c25b38d382a1de6dce1cb75ac9267736fb15a30ebf4d",
+      "manifest": {
+        "manifest_version": "1.0",
+        "analysis_run_id": "run_20260819_100823_320e8be7",
+        "batch_id": "batch_20260813_192525_e45d808e",
+        "batch_path": "${TRACE_ANALYSIS_SOURCE}/preprocessed/batch_20260813_192525_e45d808e",
+        "stage": "02_analyze",
+        "status": "partial",
+        "provider": "pjlab_proxy",
+        "model": "glm-5.2-1m",
+        "prompt_version": "trace-user-screen-rubrics-v1",
+        "attribution_prompt_version": "trace-agent-verification-v2",
+        "model_parameters": {
+          "reasoning_effort": "low",
+          "max_completion_tokens": 8192
+        },
+        "total_trace_count": 764,
+        "target_trace_count": 764,
+        "selected_trace_count": 1,
+        "selection": "all_pending",
+        "completed_trace_count": 2,
+        "failed_trace_count": 0,
+        "model_call_count": 1,
+        "strategy_counts": {
+          "user_screen_only": 1
+        },
+        "usage": {
+          "prompt_tokens": 2602,
+          "completion_tokens": 6819,
+          "total_tokens": 9421
+        },
+        "user_screen_output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_100823_320e8be7/02_analyze/user_screen__batch_20260813_192525_e45d808e__run_20260819_100823_320e8be7.jsonl",
+        "output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_100823_320e8be7/02_analyze/trace_analysis__batch_20260813_192525_e45d808e__run_20260819_100823_320e8be7.jsonl",
+        "errors_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_100823_320e8be7/02_analyze/errors.jsonl",
+        "progress_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_100823_320e8be7/02_analyze/progress.jsonl",
+        "updated_at": "2026-08-19T10:14:46.344284+08:00"
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_100823_320e8be7/03_export/manifest.json",
+      "bytes": 2251,
+      "sha256": "e429df1f1b121824bedb0adeb0cd6ac7050cac604c8b9f941e3c28b3793a835c",
+      "manifest": {
+        "manifest_version": "1.0",
+        "stage": "03_export",
+        "status": "partial",
+        "schema_version": "3.0",
+        "batch_id": "batch_20260813_192525_e45d808e",
+        "analysis_run_id": "run_20260819_100823_320e8be7",
+        "trace_count": 2,
+        "needs_review_trace_count": 0,
+        "requirement_count": 11,
+        "pain_episode_count": 0,
+        "agent_related_pain_count": 0,
+        "capability_gap_count": 0,
+        "generated_at": "2026-08-19T10:14:55.262773+08:00",
+        "input_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_100823_320e8be7/02_analyze/trace_analysis__batch_20260813_192525_e45d808e__run_20260819_100823_320e8be7.jsonl",
+        "output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_100823_320e8be7/03_export",
+        "artifacts": [
+          "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_100823_320e8be7/03_export/requirements.jsonl",
+          "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_100823_320e8be7/03_export/pain_episodes.jsonl",
+          "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_100823_320e8be7/03_export/capability_gaps.jsonl",
+          "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_100823_320e8be7/03_export/capability_requirement_distribution.jsonl",
+          "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_100823_320e8be7/03_export/capability_gap_distribution.jsonl",
+          "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_100823_320e8be7/03_export/model_harness_provider_summary.jsonl",
+          "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_100823_320e8be7/03_export/summary.jsonl"
+        ]
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_101745_38621ee3/02_analyze/manifest.json",
+      "bytes": 5251,
+      "sha256": "700c8bd7483bd5ca804ac5b01250b0b8b92acbbdac6f56a6db371b0b2ba7159f",
+      "manifest": {
+        "manifest_version": "1.0",
+        "analysis_run_id": "run_20260819_101745_38621ee3",
+        "batch_id": "batch_20260813_192525_e45d808e",
+        "batch_path": "${TRACE_ANALYSIS_SOURCE}/preprocessed/batch_20260813_192525_e45d808e",
+        "stage": "02_analyze",
+        "status": "completed",
+        "provider": "pjlab_proxy",
+        "model": "glm-5.2-1m",
+        "prompt_version": "trace-user-screen-rubrics-v1",
+        "attribution_prompt_version": "trace-agent-verification-v2",
+        "model_parameters": {
+          "thinking_type": "disabled",
+          "reasoning_effort": "none",
+          "max_completion_tokens": 16384
+        },
+        "total_trace_count": 764,
+        "target_trace_count": 764,
+        "selected_trace_count": 4,
+        "fresh_trace_count": 0,
+        "deferred_retry_trace_count": 4,
+        "scheduling_policy": "fresh_before_historical_failures",
+        "selection": "explicit_trace_ids",
+        "completed_trace_count": 764,
+        "failed_trace_count": 0,
+        "model_call_count": 0,
+        "strategy_counts": {},
+        "usage": {},
+        "user_screen_output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_101745_38621ee3/02_analyze/user_screen__batch_20260813_192525_e45d808e__run_20260819_101745_38621ee3.jsonl",
+        "output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_101745_38621ee3/02_analyze/trace_analysis__batch_20260813_192525_e45d808e__run_20260819_101745_38621ee3.jsonl",
+        "errors_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_101745_38621ee3/02_analyze/errors.jsonl",
+        "progress_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_101745_38621ee3/02_analyze/progress.jsonl",
+        "updated_at": "2026-08-20T14:05:24.466600+08:00",
+        "execution_segments": [
+          {
+            "analysis_run_id": "run_20260819_101745_38621ee3",
+            "thinking_mode": "requested_disabled_but_provider_returned_reasoning",
+            "completed_trace_count": 200
+          },
+          {
+            "analysis_run_id": "run_20260819_150249_f4aca3d8",
+            "thinking_mode": "verified_disabled",
+            "reasoning_effort": "none",
+            "completed_trace_count": 27,
+            "failed_trace_count": 2
+          }
+        ],
+        "model_parameter_history": [
+          {
+            "thinking_type": "disabled",
+            "reasoning_effort": "none",
+            "max_completion_tokens": 8192
+          },
+          {
+            "thinking_type": "disabled",
+            "reasoning_effort": "none",
+            "max_completion_tokens": 16384
+          }
+        ],
+        "prompt_version_history": [
+          "trace-user-screen-rubrics-v1",
+          "trace-user-screen-compact-v2",
+          "trace-user-screen-compact-v3"
+        ],
+        "attribution_prompt_version_history": [
+          "trace-agent-verification-v2",
+          "trace-agent-verification-indexed-v3"
+        ],
+        "evidence_selection_prompt_version_history": [
+          "trace-agent-evidence-index-v1"
+        ],
+        "mixed_prompt_versions": true,
+        "repair_runs": [
+          {
+            "repair_run_id": "repair_20260820_133212_fc314251",
+            "status": "interrupted",
+            "target_trace_count": 4,
+            "path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_101745_38621ee3/02_analyze/repairs/repair_20260820_133212_fc314251",
+            "started_at": "2026-08-20T13:32:12.022462+08:00",
+            "updated_at": "2026-08-20T13:53:51.650954+08:00"
+          },
+          {
+            "repair_run_id": "repair_20260820_135556_c060d538",
+            "status": "partial",
+            "provider": "ailab_direct",
+            "model": "glm-5.2",
+            "target_trace_count": 4,
+            "path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_101745_38621ee3/02_analyze/repairs/repair_20260820_135556_c060d538",
+            "started_at": "2026-08-20T13:55:56.795961+08:00",
+            "completed_trace_count": 0,
+            "failed_trace_count": 4,
+            "completed_at": "2026-08-20T13:56:04.199116+08:00"
+          },
+          {
+            "repair_run_id": "repair_20260820_135721_4d3f8ee4",
+            "status": "interrupted",
+            "provider": "ailab_direct",
+            "model": "glm-5.2",
+            "target_trace_count": 4,
+            "path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_101745_38621ee3/02_analyze/repairs/repair_20260820_135721_4d3f8ee4",
+            "started_at": "2026-08-20T13:57:21.234787+08:00",
+            "updated_at": "2026-08-20T14:03:54.564414+08:00"
+          },
+          {
+            "repair_run_id": "repair_20260820_140505_9391ca3f",
+            "status": "completed",
+            "provider": "ailab_direct",
+            "model": "glm-5.2",
+            "target_trace_count": 1,
+            "path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_101745_38621ee3/02_analyze/repairs/repair_20260820_140505_9391ca3f",
+            "started_at": "2026-08-20T14:05:05.174852+08:00",
+            "completed_trace_count": 1,
+            "failed_trace_count": 0,
+            "completed_at": "2026-08-20T14:05:24.466586+08:00"
+          }
+        ],
+        "pending_trace_count": 0
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_101745_38621ee3/02_analyze/repairs/repair_20260820_133212_fc314251/manifest.json",
+      "bytes": 1141,
+      "sha256": "76cf59c224180c65b04d2f58ce26f32c51de59b98c4d556356d80c167a195164",
+      "manifest": {
+        "manifest_version": "1.0",
+        "repair_run_id": "repair_20260820_133212_fc314251",
+        "analysis_run_id": "run_20260819_101745_38621ee3",
+        "batch_id": "batch_20260813_192525_e45d808e",
+        "status": "interrupted",
+        "provider": "pjlab_proxy",
+        "model": "glm-5.2-1m",
+        "thinking_type": "disabled",
+        "max_completion_tokens": 8192,
+        "target_trace_ids": [
+          "trace_1a1fee4f3ec840bce1b95250",
+          "trace_86c2f7fd360ee876aa372015",
+          "trace_89271207df57c517d675879b",
+          "trace_a4b59367c64141ca90a43688"
+        ],
+        "target_trace_count": 4,
+        "completed_trace_count": 0,
+        "failed_trace_count": 0,
+        "prompt_snapshot_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_101745_38621ee3/02_analyze/repairs/repair_20260820_133212_fc314251/prompt_snapshot.json",
+        "output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_101745_38621ee3/02_analyze/repairs/repair_20260820_133212_fc314251/trace_analysis.jsonl",
+        "updated_at": "2026-08-20T13:53:51.647171+08:00"
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_101745_38621ee3/02_analyze/repairs/repair_20260820_135556_c060d538/manifest.json",
+      "bytes": 1175,
+      "sha256": "0e6070eb0ef558316d5ffe984baad1f116ebcd600fed9af0aa0ffa1359086f49",
+      "manifest": {
+        "manifest_version": "1.0",
+        "repair_run_id": "repair_20260820_135556_c060d538",
+        "analysis_run_id": "run_20260819_101745_38621ee3",
+        "batch_id": "batch_20260813_192525_e45d808e",
+        "status": "partial",
+        "provider": "ailab_direct",
+        "model": "glm-5.2",
+        "thinking_type": "disabled",
+        "max_completion_tokens": 8192,
+        "target_trace_ids": [
+          "trace_1a1fee4f3ec840bce1b95250",
+          "trace_86c2f7fd360ee876aa372015",
+          "trace_89271207df57c517d675879b",
+          "trace_a4b59367c64141ca90a43688"
+        ],
+        "target_trace_count": 4,
+        "completed_trace_count": 0,
+        "failed_trace_count": 4,
+        "prompt_snapshot_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_101745_38621ee3/02_analyze/repairs/repair_20260820_135556_c060d538/prompt_snapshot.json",
+        "output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_101745_38621ee3/02_analyze/repairs/repair_20260820_135556_c060d538/trace_analysis.jsonl",
+        "updated_at": "2026-08-20T13:56:04.195848+08:00",
+        "model_call_count": 0,
+        "usage": {}
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_101745_38621ee3/02_analyze/repairs/repair_20260820_135721_4d3f8ee4/manifest.json",
+      "bytes": 1139,
+      "sha256": "e4b7b97b4831a8688d93dea51094852d7b6f3c79fe5898e7d9f8a5ce376c3738",
+      "manifest": {
+        "manifest_version": "1.0",
+        "repair_run_id": "repair_20260820_135721_4d3f8ee4",
+        "analysis_run_id": "run_20260819_101745_38621ee3",
+        "batch_id": "batch_20260813_192525_e45d808e",
+        "status": "interrupted",
+        "provider": "ailab_direct",
+        "model": "glm-5.2",
+        "thinking_type": "disabled",
+        "max_completion_tokens": 8192,
+        "target_trace_ids": [
+          "trace_1a1fee4f3ec840bce1b95250",
+          "trace_86c2f7fd360ee876aa372015",
+          "trace_89271207df57c517d675879b",
+          "trace_a4b59367c64141ca90a43688"
+        ],
+        "target_trace_count": 4,
+        "completed_trace_count": 0,
+        "failed_trace_count": 0,
+        "prompt_snapshot_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_101745_38621ee3/02_analyze/repairs/repair_20260820_135721_4d3f8ee4/prompt_snapshot.json",
+        "output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_101745_38621ee3/02_analyze/repairs/repair_20260820_135721_4d3f8ee4/trace_analysis.jsonl",
+        "updated_at": "2026-08-20T14:03:54.559824+08:00"
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_101745_38621ee3/02_analyze/repairs/repair_20260820_140505_9391ca3f/manifest.json",
+      "bytes": 1150,
+      "sha256": "bb7c4e8516d7969e51af4e9525e31a8b224fdf7d290812f2f6e3b919901f48e8",
+      "manifest": {
+        "manifest_version": "1.0",
+        "repair_run_id": "repair_20260820_140505_9391ca3f",
+        "analysis_run_id": "run_20260819_101745_38621ee3",
+        "batch_id": "batch_20260813_192525_e45d808e",
+        "status": "completed",
+        "provider": "ailab_direct",
+        "model": "glm-5.2",
+        "thinking_type": "disabled",
+        "max_completion_tokens": 8192,
+        "target_trace_ids": [
+          "trace_a4b59367c64141ca90a43688"
+        ],
+        "target_trace_count": 1,
+        "completed_trace_count": 1,
+        "failed_trace_count": 0,
+        "prompt_snapshot_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_101745_38621ee3/02_analyze/repairs/repair_20260820_140505_9391ca3f/prompt_snapshot.json",
+        "output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_101745_38621ee3/02_analyze/repairs/repair_20260820_140505_9391ca3f/trace_analysis.jsonl",
+        "updated_at": "2026-08-20T14:05:24.463520+08:00",
+        "model_call_count": 1,
+        "usage": {
+          "prompt_tokens": 13849,
+          "completion_tokens": 625,
+          "total_tokens": 14474
+        }
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_101745_38621ee3/03_export/manifest.json",
+      "bytes": 2780,
+      "sha256": "92065d64b34618f22a6d0e772470e88619d6505801610876270c11042e36abad",
+      "manifest": {
+        "manifest_version": "1.0",
+        "stage": "03_export",
+        "status": "completed",
+        "schema_version": "3.0",
+        "batch_id": "batch_20260813_192525_e45d808e",
+        "analysis_run_id": "run_20260819_101745_38621ee3",
+        "trace_count": 764,
+        "needs_review_trace_count": 231,
+        "requirement_count": 2501,
+        "pain_episode_count": 12,
+        "agent_related_pain_count": 12,
+        "capability_gap_count": 22,
+        "generated_at": "2026-08-20T14:07:24.033105+08:00",
+        "input_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_101745_38621ee3/02_analyze/trace_analysis__batch_20260813_192525_e45d808e__run_20260819_101745_38621ee3.jsonl",
+        "output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_101745_38621ee3/03_export",
+        "artifacts": [
+          "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_101745_38621ee3/03_export/requirements.jsonl",
+          "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_101745_38621ee3/03_export/pain_episodes.jsonl",
+          "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_101745_38621ee3/03_export/capability_gaps.jsonl",
+          "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_101745_38621ee3/03_export/capability_requirement_distribution.jsonl",
+          "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_101745_38621ee3/03_export/capability_gap_distribution.jsonl",
+          "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_101745_38621ee3/03_export/model_harness_provider_summary.jsonl",
+          "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_101745_38621ee3/03_export/summary.jsonl",
+          "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_101745_38621ee3/03_export/agent_verified_traces__batch_20260813_192525_e45d808e__run_20260819_101745_38621ee3.jsonl",
+          "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_101745_38621ee3/03_export/agent_verified_user_turns__batch_20260813_192525_e45d808e__run_20260819_101745_38621ee3.jsonl"
+        ]
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_101745_38621ee3/04_results/manifest.json",
+      "bytes": 893,
+      "sha256": "6d84173724dfbeec6efd1fac420d52642f3489dca7424be76331e3a883943c6a",
+      "manifest": {
+        "manifest_version": "1.0",
+        "stage": "04_results",
+        "status": "completed",
+        "batch_id": "batch_20260813_192525_e45d808e",
+        "analysis_run_id": "run_20260819_101745_38621ee3",
+        "schema_version": "pain-case-v1",
+        "input_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_101745_38621ee3/02_analyze/trace_analysis__batch_20260813_192525_e45d808e__run_20260819_101745_38621ee3.jsonl",
+        "output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_101745_38621ee3/04_results/pain_cases__batch_20260813_192525_e45d808e__run_20260819_101745_38621ee3.jsonl",
+        "case_count": 22,
+        "judgment_counts": {
+          "excluded": 8,
+          "confirmed": 12,
+          "review": 2
+        },
+        "generated_at": "2026-08-20T20:54:31+08:00"
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_101745_38621ee3/05_report_publish/manifest.json",
+      "bytes": 1311,
+      "sha256": "9b5ca2972b1709bcf7df8f655f0caa337b8c849e2c8b2b9c046acc8b57057697",
+      "manifest": {
+        "manifest_version": "1.0",
+        "stage": "05_report_publish",
+        "status": "completed",
+        "batch_id": "batch_20260813_192525_e45d808e",
+        "analysis_run_id": "run_20260819_101745_38621ee3",
+        "input_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_101745_38621ee3/04_results/pain_cases__batch_20260813_192525_e45d808e__run_20260819_101745_38621ee3.jsonl",
+        "report_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_101745_38621ee3/05_report_publish/pain_analysis__batch_20260813_192525_e45d808e__run_20260819_101745_38621ee3.md",
+        "bundle_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_101745_38621ee3/05_report_publish/web_bundle",
+        "publication_path": "${TRACE_ANALYSIS_SOURCE}/workspace/publications/pain-report/batches/batch_20260813_192525_e45d808e/run_20260819_101745_38621ee3",
+        "catalog_path": "${TRACE_ANALYSIS_SOURCE}/workspace/publications/pain-report/catalog.json",
+        "case_count": 22,
+        "generated_at": "2026-08-21T16:53:35+08:00"
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_150249_f4aca3d8/02_analyze/manifest.json",
+      "bytes": 1961,
+      "sha256": "ae7f7379f8a0cc7d033af5c4b860f5c3a12f13f17291dba6beadd0e7b9a9418f",
+      "manifest": {
+        "manifest_version": "1.0",
+        "analysis_run_id": "run_20260819_150249_f4aca3d8",
+        "batch_id": "batch_20260813_192525_e45d808e",
+        "batch_path": "${TRACE_ANALYSIS_SOURCE}/preprocessed/batch_20260813_192525_e45d808e",
+        "stage": "02_analyze",
+        "status": "interrupted",
+        "provider": "pjlab_proxy",
+        "model": "glm-5.2-1m",
+        "prompt_version": "trace-user-screen-rubrics-v1",
+        "attribution_prompt_version": "trace-agent-verification-v2",
+        "model_parameters": {
+          "thinking_type": "disabled",
+          "reasoning_effort": "none",
+          "max_completion_tokens": 8192
+        },
+        "total_trace_count": 764,
+        "target_trace_count": 764,
+        "selected_trace_count": 564,
+        "selection": "explicit_trace_ids",
+        "completed_trace_count": 27,
+        "failed_trace_count": 2,
+        "model_call_count": 27,
+        "strategy_counts": {
+          "user_screen_only": 27
+        },
+        "usage": {
+          "prompt_tokens": 86195,
+          "completion_tokens": 51732,
+          "total_tokens": 137927
+        },
+        "user_screen_output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_150249_f4aca3d8/02_analyze/user_screen__batch_20260813_192525_e45d808e__run_20260819_150249_f4aca3d8.jsonl",
+        "output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_150249_f4aca3d8/02_analyze/trace_analysis__batch_20260813_192525_e45d808e__run_20260819_150249_f4aca3d8.jsonl",
+        "errors_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_150249_f4aca3d8/02_analyze/errors.jsonl",
+        "progress_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260813_192525_e45d808e/run_20260819_150249_f4aca3d8/02_analyze/progress.jsonl",
+        "updated_at": "2026-08-19T15:12:57.744242+08:00"
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260820_183932_0042242a/pilot_20260821_requirements_capability_names_v1/03_agent_verify/manifest.json",
+      "bytes": 1452,
+      "sha256": "7ffc00ee5e38cb0048c3dce21b8265b30cf8fdc794e3c8d0027f1f1e78a9bd5c",
+      "manifest": {
+        "manifest_version": "1.0",
+        "stage": "03_agent_verify",
+        "status": "completed",
+        "batch_id": "batch_20260820_183932_0042242a",
+        "analysis_run_id": "pilot_20260821_requirements_capability_names_v1",
+        "provider": "ailab_direct",
+        "model": "glm-5.2",
+        "agent_prompt_version": "trace-agent-verification-v3",
+        "evidence_selection_prompt_version": "trace-agent-evidence-index-v3",
+        "input_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260820_183932_0042242a/pilot_20260821_requirements_capability_names_v1/02_user_screen/user_screen__batch_20260820_183932_0042242a__pilot_20260821_requirements_capability_names_v1.jsonl",
+        "selected_trace_count": 10,
+        "completed_trace_count": 10,
+        "pending_trace_count": 0,
+        "failed_trace_count": 0,
+        "strategy_counts": {
+          "episode_partitioned_agent_verification": 1
+        },
+        "output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260820_183932_0042242a/pilot_20260821_requirements_capability_names_v1/03_agent_verify/trace_analysis__batch_20260820_183932_0042242a__pilot_20260821_requirements_capability_names_v1.jsonl",
+        "errors_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260820_183932_0042242a/pilot_20260821_requirements_capability_names_v1/03_agent_verify/errors.jsonl",
+        "updated_at": "2026-08-21T13:23:30+08:00"
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260821_005210_75964279/02_user_screen/manifest.json",
+      "bytes": 1149,
+      "sha256": "821d704467440e01c8f832a1f3ac8d3e11c56bb8ab16ba534a7ca323f61e7006",
+      "manifest": {
+        "manifest_version": "1.0",
+        "stage": "02_user_screen",
+        "status": "completed",
+        "batch_id": "batch_20260820_183932_0042242a",
+        "analysis_run_id": "run_20260821_005210_75964279",
+        "provider": "ailab_direct",
+        "model": "glm-5.2",
+        "prompt_version": "trace-user-screen-compact-v4",
+        "input_product": "user_turns",
+        "input_path": "${TRACE_ANALYSIS_SOURCE}/preprocessed/batch_20260820_183932_0042242a/user_turns__batch_20260820_183932_0042242a.jsonl",
+        "total_trace_count": 2612,
+        "completed_trace_count": 2612,
+        "pending_trace_count": 0,
+        "failed_trace_count": 0,
+        "route_counts": {},
+        "output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260821_005210_75964279/02_user_screen/user_screen__batch_20260820_183932_0042242a__run_20260821_005210_75964279.jsonl",
+        "errors_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260821_005210_75964279/02_user_screen/errors.jsonl",
+        "updated_at": "2026-08-21T12:23:16+08:00"
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260821_005210_75964279/03_agent_verify/manifest.json",
+      "bytes": 1289,
+      "sha256": "ff26c48f605f5f0dc3d49f714f538763a35b360f8817e262f0d5f9a793f6808c",
+      "manifest": {
+        "manifest_version": "1.0",
+        "stage": "03_agent_verify",
+        "status": "completed",
+        "batch_id": "batch_20260820_183932_0042242a",
+        "analysis_run_id": "run_20260821_005210_75964279",
+        "provider": "ailab_direct",
+        "model": "glm-5.2",
+        "agent_prompt_version": "trace-agent-verification-v2",
+        "evidence_selection_prompt_version": "trace-agent-evidence-index-v3",
+        "input_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260821_005210_75964279/02_user_screen/user_screen__batch_20260820_183932_0042242a__run_20260821_005210_75964279.jsonl",
+        "selected_trace_count": 357,
+        "completed_trace_count": 357,
+        "pending_trace_count": 0,
+        "failed_trace_count": 0,
+        "strategy_counts": {},
+        "output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260821_005210_75964279/03_agent_verify/trace_analysis__batch_20260820_183932_0042242a__run_20260821_005210_75964279.jsonl",
+        "errors_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260821_005210_75964279/03_agent_verify/errors.jsonl",
+        "updated_at": "2026-08-21T12:23:58+08:00"
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260821_005210_75964279/04_results/manifest.json",
+      "bytes": 903,
+      "sha256": "aa92ed2752514550664ec1ebbfdd5309efe9ab4200b20eace2853cf9a1d7b487",
+      "manifest": {
+        "manifest_version": "1.0",
+        "stage": "04_results",
+        "status": "completed",
+        "batch_id": "batch_20260820_183932_0042242a",
+        "analysis_run_id": "run_20260821_005210_75964279",
+        "schema_version": "pain-case-v1",
+        "input_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260821_005210_75964279/03_agent_verify/trace_analysis__batch_20260820_183932_0042242a__run_20260821_005210_75964279.jsonl",
+        "output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260821_005210_75964279/04_results/pain_cases__batch_20260820_183932_0042242a__run_20260821_005210_75964279.jsonl",
+        "case_count": 436,
+        "judgment_counts": {
+          "confirmed": 272,
+          "excluded": 148,
+          "review": 16
+        },
+        "generated_at": "2026-08-21T12:24:35+08:00"
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260821_005210_75964279/05_report_publish/manifest.json",
+      "bytes": 1312,
+      "sha256": "722f90138a2c34dc79ab46c85fc487d792eaa9440997e619471ede416ccc76da",
+      "manifest": {
+        "manifest_version": "1.0",
+        "stage": "05_report_publish",
+        "status": "completed",
+        "batch_id": "batch_20260820_183932_0042242a",
+        "analysis_run_id": "run_20260821_005210_75964279",
+        "input_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260821_005210_75964279/04_results/pain_cases__batch_20260820_183932_0042242a__run_20260821_005210_75964279.jsonl",
+        "report_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260821_005210_75964279/05_report_publish/pain_analysis__batch_20260820_183932_0042242a__run_20260821_005210_75964279.md",
+        "bundle_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260821_005210_75964279/05_report_publish/web_bundle",
+        "publication_path": "${TRACE_ANALYSIS_SOURCE}/workspace/publications/pain-report/batches/batch_20260820_183932_0042242a/run_20260821_005210_75964279",
+        "catalog_path": "${TRACE_ANALYSIS_SOURCE}/workspace/publications/pain-report/catalog.json",
+        "case_count": 436,
+        "generated_at": "2026-08-21T12:24:39+08:00"
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260821_133000_requirements_v3/02_user_screen/manifest.json",
+      "bytes": 1170,
+      "sha256": "ef96218d969987038028196a13eb77656869cee072244b67dbe77743a1a34a1e",
+      "manifest": {
+        "manifest_version": "1.0",
+        "stage": "02_user_screen",
+        "status": "completed",
+        "batch_id": "batch_20260820_183932_0042242a",
+        "analysis_run_id": "run_20260821_133000_requirements_v3",
+        "provider": "ailab_direct",
+        "model": "glm-5.2",
+        "prompt_version": "trace-user-screen-compact-v4",
+        "input_product": "user_turns",
+        "input_path": "${TRACE_ANALYSIS_SOURCE}/preprocessed/batch_20260820_183932_0042242a/user_turns__batch_20260820_183932_0042242a.jsonl",
+        "total_trace_count": 2612,
+        "completed_trace_count": 2612,
+        "pending_trace_count": 0,
+        "failed_trace_count": 0,
+        "route_counts": {},
+        "output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260821_133000_requirements_v3/02_user_screen/user_screen__batch_20260820_183932_0042242a__run_20260821_133000_requirements_v3.jsonl",
+        "errors_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260821_005210_75964279/02_user_screen/errors.jsonl",
+        "updated_at": "2026-08-21T12:23:16+08:00"
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260821_133000_requirements_v3/03_agent_verify/manifest.json",
+      "bytes": 1509,
+      "sha256": "e4faca195e1d93ccf612900affb1b95121f9e78d020eb388cc76445b20c51166",
+      "manifest": {
+        "manifest_version": "1.0",
+        "stage": "03_agent_verify",
+        "status": "completed",
+        "batch_id": "batch_20260820_183932_0042242a",
+        "analysis_run_id": "run_20260821_133000_requirements_v3",
+        "provider": "ailab_direct",
+        "model": "glm-5.2",
+        "agent_prompt_version": "trace-agent-verification-v3",
+        "evidence_selection_prompt_version": "trace-agent-evidence-index-v3",
+        "input_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260821_133000_requirements_v3/02_user_screen/user_screen__batch_20260820_183932_0042242a__run_20260821_133000_requirements_v3.jsonl",
+        "selected_trace_count": 357,
+        "completed_trace_count": 357,
+        "pending_trace_count": 0,
+        "failed_trace_count": 0,
+        "strategy_counts": {
+          "compact_user_screen_then_direct_agent_verification": 98,
+          "compact_user_screen_then_indexed_agent_verification": 223,
+          "episode_partitioned_agent_verification": 36
+        },
+        "output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260821_133000_requirements_v3/03_agent_verify/trace_analysis__batch_20260820_183932_0042242a__run_20260821_133000_requirements_v3.jsonl",
+        "errors_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260821_133000_requirements_v3/03_agent_verify/errors.jsonl",
+        "updated_at": "2026-08-21T14:26:58+08:00"
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260821_133000_requirements_v3/04_results/manifest.json",
+      "bytes": 938,
+      "sha256": "f50f19ef76acb647c2296046fa4bde2cf7f9f24acf8fad8318e7c4c9685a56d7",
+      "manifest": {
+        "manifest_version": "1.0",
+        "stage": "04_results",
+        "status": "completed",
+        "batch_id": "batch_20260820_183932_0042242a",
+        "analysis_run_id": "run_20260821_133000_requirements_v3",
+        "schema_version": "pain-case-v1",
+        "input_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260821_133000_requirements_v3/03_agent_verify/trace_analysis__batch_20260820_183932_0042242a__run_20260821_133000_requirements_v3.jsonl",
+        "output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260821_133000_requirements_v3/04_results/pain_cases__batch_20260820_183932_0042242a__run_20260821_133000_requirements_v3.jsonl",
+        "case_count": 437,
+        "judgment_counts": {
+          "excluded": 137,
+          "confirmed": 282,
+          "review": 18
+        },
+        "generated_at": "2026-08-21T14:29:02+08:00"
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260821_133000_requirements_v3/05_report_publish/manifest.json",
+      "bytes": 1361,
+      "sha256": "3e8ba077f27f648dc5a7dc975fd24e473de4043dfb9fa4015af7f2b38254de03",
+      "manifest": {
+        "manifest_version": "1.0",
+        "stage": "05_report_publish",
+        "status": "completed",
+        "batch_id": "batch_20260820_183932_0042242a",
+        "analysis_run_id": "run_20260821_133000_requirements_v3",
+        "input_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260821_133000_requirements_v3/04_results/pain_cases__batch_20260820_183932_0042242a__run_20260821_133000_requirements_v3.jsonl",
+        "report_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260821_133000_requirements_v3/05_report_publish/pain_analysis__batch_20260820_183932_0042242a__run_20260821_133000_requirements_v3.md",
+        "bundle_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260821_133000_requirements_v3/05_report_publish/web_bundle",
+        "publication_path": "${TRACE_ANALYSIS_SOURCE}/workspace/publications/pain-report/batches/batch_20260820_183932_0042242a/run_20260821_133000_requirements_v3",
+        "catalog_path": "${TRACE_ANALYSIS_SOURCE}/workspace/publications/pain-report/catalog.json",
+        "case_count": 437,
+        "generated_at": "2026-08-21T16:55:53+08:00"
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260821_episode_boundary_v4/03_agent_verify/manifest.json",
+      "bytes": 1360,
+      "sha256": "d7b33f4360aaf02fd517ba41700b3e83414a9083e2a3db30a01b024e0bfddfab",
+      "manifest": {
+        "manifest_version": "1.0",
+        "stage": "03_agent_verify",
+        "status": "completed",
+        "batch_id": "batch_20260820_183932_0042242a",
+        "analysis_run_id": "run_20260821_episode_boundary_v4",
+        "provider": "ailab_direct",
+        "model": "glm-5.2",
+        "agent_prompt_version": "trace-agent-verification-v3",
+        "evidence_selection_prompt_version": "trace-agent-evidence-index-v3",
+        "input_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260821_episode_boundary_v4/02_user_screen/user_screen__batch_20260820_183932_0042242a__run_20260821_episode_boundary_v4.jsonl",
+        "selected_trace_count": 2,
+        "completed_trace_count": 2,
+        "pending_trace_count": 0,
+        "failed_trace_count": 0,
+        "strategy_counts": {
+          "episode_partitioned_agent_verification": 2
+        },
+        "output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260821_episode_boundary_v4/03_agent_verify/trace_analysis__batch_20260820_183932_0042242a__run_20260821_episode_boundary_v4.jsonl",
+        "errors_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260821_episode_boundary_v4/03_agent_verify/errors.jsonl",
+        "updated_at": "2026-08-22T17:53:54+08:00"
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260822_episode_boundary_corrected_v4/03_agent_verify/manifest.json",
+      "bytes": 1244,
+      "sha256": "702245a34bdfa38dba57934004f287ef1d7188fa12edd058dac32f0cafcc40b1",
+      "manifest": {
+        "manifest_version": "1.0",
+        "stage": "03_agent_verify",
+        "status": "completed",
+        "batch_id": "batch_20260820_183932_0042242a",
+        "analysis_run_id": "run_20260822_episode_boundary_corrected_v4",
+        "provider": "ailab_direct",
+        "model": "glm-5.2",
+        "agent_prompt_version": "trace-agent-verification-v3",
+        "evidence_selection_prompt_version": "trace-agent-evidence-index-v3",
+        "input_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260822_episode_boundary_corrected_v4/02_user_screen/user_screen__batch_20260820_183932_0042242a__run_20260822_episode_boundary_corrected_v4.jsonl",
+        "source_run_id": "run_20260821_005210_75964279",
+        "correction_run_id": "run_20260821_episode_boundary_v4",
+        "replaced_trace_count": 22,
+        "completed_trace_count": 357,
+        "pending_trace_count": 0,
+        "failed_trace_count": 0,
+        "output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260822_episode_boundary_corrected_v4/03_agent_verify/trace_analysis__batch_20260820_183932_0042242a__run_20260822_episode_boundary_corrected_v4.jsonl",
+        "updated_at": "2026-08-22T18:15:14+08:00"
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260822_episode_boundary_corrected_v4/04_results/manifest.json",
+      "bytes": 973,
+      "sha256": "78a62d6e9639e7b84c55b0037ea2561253739cc3076212976807c5195af9e4c3",
+      "manifest": {
+        "manifest_version": "1.0",
+        "stage": "04_results",
+        "status": "completed",
+        "batch_id": "batch_20260820_183932_0042242a",
+        "analysis_run_id": "run_20260822_episode_boundary_corrected_v4",
+        "schema_version": "pain-case-v1",
+        "input_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260822_episode_boundary_corrected_v4/03_agent_verify/trace_analysis__batch_20260820_183932_0042242a__run_20260822_episode_boundary_corrected_v4.jsonl",
+        "output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260822_episode_boundary_corrected_v4/04_results/pain_cases__batch_20260820_183932_0042242a__run_20260822_episode_boundary_corrected_v4.jsonl",
+        "case_count": 436,
+        "judgment_counts": {
+          "confirmed": 265,
+          "excluded": 155,
+          "review": 16
+        },
+        "generated_at": "2026-08-22T18:16:47+08:00"
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260822_episode_boundary_corrected_v4/05_report_publish/manifest.json",
+      "bytes": 1410,
+      "sha256": "3d473415ccef93fa96ca97c259ab5ffa6a5969bd24b5a75acc2b299b7b13d0c1",
+      "manifest": {
+        "manifest_version": "1.0",
+        "stage": "05_report_publish",
+        "status": "completed",
+        "batch_id": "batch_20260820_183932_0042242a",
+        "analysis_run_id": "run_20260822_episode_boundary_corrected_v4",
+        "input_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260822_episode_boundary_corrected_v4/04_results/pain_cases__batch_20260820_183932_0042242a__run_20260822_episode_boundary_corrected_v4.jsonl",
+        "report_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260822_episode_boundary_corrected_v4/05_report_publish/pain_analysis__batch_20260820_183932_0042242a__run_20260822_episode_boundary_corrected_v4.md",
+        "bundle_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260822_episode_boundary_corrected_v4/05_report_publish/web_bundle",
+        "publication_path": "${TRACE_ANALYSIS_SOURCE}/workspace/publications/pain-report/batches/batch_20260820_183932_0042242a/run_20260822_episode_boundary_corrected_v4",
+        "catalog_path": "${TRACE_ANALYSIS_SOURCE}/workspace/publications/pain-report/catalog.json",
+        "case_count": 436,
+        "generated_at": "2026-08-22T18:18:52+08:00"
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260822_episode_boundary_corrected_v4/06_trace_quality_labeling/trace-label-selection-v6-20260917/review-remaining-70-20260920/manifest.json",
+      "bytes": 4301,
+      "sha256": "f66117d3028cab1ec1e0a669a52e52257ce98e95574dbe636727343471d3a9d2",
+      "manifest": {
+        "source": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260820_183932_0042242a/run_20260822_episode_boundary_corrected_v4/06_trace_quality_labeling/trace-label-selection-v6-20260917/review-observed-failures-20260920",
+        "cases": [
+          "episode_076ab1548b998f8e3cc87d06__line_177",
+          "episode_07c0cc9dd6d51c5abc32bee0__line_142",
+          "episode_08d3251c1c8ffb1e81bd4663__line_130",
+          "episode_0927fc9184228b7928a3a8f5__line_178",
+          "episode_0f4c72c57562755d43ba4a54__line_207",
+          "episode_0fe92058377b01da05e7e1cb__line_276",
+          "episode_198885b6b46c708be05641cf__line_300",
+          "episode_1cb6c0b84cdfcd86e298a24c__line_213",
+          "episode_21699336fac1487b4e0f9e57__line_268",
+          "episode_23f1da2042ffd4e8e415de9d__line_123",
+          "episode_28b9ef539c4a4ed48ffa8476__line_101",
+          "episode_2c5a3c31f40cc0b2e10475a5__line_74",
+          "episode_33cd315984b582c946c0ef74__line_414",
+          "episode_36217ef459a060302cbdfa83__line_417",
+          "episode_3626b6b728a817f408b1b948__line_253",
+          "episode_37294ce88982e84735ffb3ed__line_273",
+          "episode_3ec253939916ba31705afa4f__line_415",
+          "episode_486f94f465435636acd5bf9e__line_284",
+          "episode_4d09559a5f823d4cf3bdb13e__line_312",
+          "episode_5115988c3a4b6bbedb08bbbe__line_27",
+          "episode_5318f2d3308630a90ffcfa56__line_8",
+          "episode_5426783015428155ab206dcf__line_127",
+          "episode_55b794f08b4c244baa2ab50b__line_20",
+          "episode_58da5b9b254c673370ebda17__line_83",
+          "episode_592c48b4b143641e5b35db37__line_430",
+          "episode_59490e4ff5c0b0278dff180c__line_85",
+          "episode_66e6ee1654ae596786e846d9__line_372",
+          "episode_69d47c0e7af6b9c1d5376d92__line_61",
+          "episode_77eb63dd75b08db700d1b550__line_413",
+          "episode_7d5a7696c439c21220573e8c__line_195",
+          "episode_7ea60b4f57ddfc458ac88d2b__line_198",
+          "episode_81878318e4dd9d42b8026732__line_119",
+          "episode_82df8bb1e57a434f3670a8a8__line_79",
+          "episode_864dffb48b3cfbcfaac5d0bb__line_149",
+          "episode_87000a6af1b13e93d218589f__line_111",
+          "episode_88765d97f9c70276fc0bb462__line_124",
+          "episode_88cd1a9c58f12699f41490c9__line_358",
+          "episode_9108cec835468f138f1d6600__line_116",
+          "episode_9210a569e774f7b7cee977ae__line_406",
+          "episode_9344b9655e36bff276c8b89a__line_320",
+          "episode_9e49acf4eaa6a8b423ef2c1f__line_132",
+          "episode_ad3fa2ac9b833fe862c4c2b9__line_54",
+          "episode_ade2518ae0d68df19953ef76__line_60",
+          "episode_b3d1611f7ae0ac6d16ae6f0a__line_330",
+          "episode_ba159112feb3219f6772c9e3__line_171",
+          "episode_bfc3cb47fa1cc80f88999e8d__line_14",
+          "episode_c1e80264a6ca49f008eef00f__line_399",
+          "episode_c2c7cfc9d2cc38c6cf65bad6__line_369",
+          "episode_c81451f5fd894fd428454d13__line_146",
+          "episode_c8fd4d36eaad82274d85b24d__line_352",
+          "episode_c99a53563b73a25fd176d4fe__line_426",
+          "episode_d391683f6e80c4394e6fb938__line_407",
+          "episode_d3dcbc3333c4e39743a4b10f__line_190",
+          "episode_d6dfb53ef69f6de2af7770cc__line_179",
+          "episode_d7375e3053e0cb56c018b3a1__line_196",
+          "episode_d8c172c8c819889c837d4732__line_3",
+          "episode_d9d668288a806ed82e6fbf9b__line_218",
+          "episode_db353484361b32dfd7a53379__line_189",
+          "episode_e188e8be50cf354bbb1e9162__line_140",
+          "episode_e2651bc94fc7a6d9b664eb5c__line_433",
+          "episode_e436a04089b390e54e332b60__line_6",
+          "episode_e7c0e3875dc4a1d66c3c917b__line_46",
+          "episode_e8b390c78e9fa09da41c769a__line_420",
+          "episode_f35205cb5d135415eb62728d__line_214",
+          "episode_f3a622a5564e2ffc718194a7__line_264",
+          "episode_f740efeb6487d462ec580e78__line_346",
+          "episode_f8db2f9352e2dd5ee0f599d2__line_210",
+          "episode_fc0dee9e7598c769084b2706__line_349",
+          "episode_fd0166b05433f28f765c8461__line_339",
+          "episode_ff78d77e68b79b525c429b3b__line_205"
+        ],
+        "workers": 4,
+        "automatic_apply": false,
+        "source_hashes": {
+          "labels.jsonl": "e51b64998a3a923d2e97acf96e3723f07e398c77c876b1facdc2b78dcec26cfb",
+          "evidence.jsonl": "7776690e36510929485da77b4e2d79fd3bf5299b742b59c4cf09a3bb9639919e",
+          "remaining_review_queue.jsonl": "998d7ffc0d74abadecca0b9f2a124443b0d16d336a242605561dc0c9970196e9"
+        },
+        "system_sha256": "5dbae017419bd2e4da65eaa3321e9a9255b43f3e7be331152c36feb5c30e914c",
+        "policy_sha256": "7d297d88326aba7fde9c1dfe9d6656be31dd8727fa0c1252d4490d73c21f67b0"
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260822_222726_7af71bbc/02_user_screen/manifest.json",
+      "bytes": 1149,
+      "sha256": "9c1ee14e3f4219da5c30ecc7babebbf1f5b1f8b365ed97dcc2ee18bbf9a1501e",
+      "manifest": {
+        "manifest_version": "1.0",
+        "stage": "02_user_screen",
+        "status": "completed",
+        "batch_id": "batch_20260822_184756_50ad9a83",
+        "analysis_run_id": "run_20260822_222726_7af71bbc",
+        "provider": "ailab_direct",
+        "model": "glm-5.2",
+        "prompt_version": "trace-user-screen-compact-v4",
+        "input_product": "user_turns",
+        "input_path": "${TRACE_ANALYSIS_SOURCE}/preprocessed/batch_20260822_184756_50ad9a83/user_turns__batch_20260822_184756_50ad9a83.jsonl",
+        "total_trace_count": 6432,
+        "completed_trace_count": 6432,
+        "pending_trace_count": 0,
+        "failed_trace_count": 0,
+        "route_counts": {},
+        "output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260822_222726_7af71bbc/02_user_screen/user_screen__batch_20260822_184756_50ad9a83__run_20260822_222726_7af71bbc.jsonl",
+        "errors_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260822_222726_7af71bbc/02_user_screen/errors.jsonl",
+        "updated_at": "2026-08-23T12:34:51+08:00"
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260822_222726_7af71bbc/03_agent_verify/manifest.json",
+      "bytes": 1736,
+      "sha256": "6b4b4a17a714d886809230a9fe973266f62b7a36cdfa96ddc2aba40161b74be7",
+      "manifest": {
+        "manifest_version": "1.0",
+        "stage": "03_agent_verify",
+        "status": "completed",
+        "batch_id": "batch_20260822_184756_50ad9a83",
+        "analysis_run_id": "run_20260822_222726_7af71bbc",
+        "provider": "mixed:ailab_direct|pjlab_proxy_multi_key",
+        "model": "mixed:glm-5.2|glm-5.2-1m",
+        "agent_prompt_version": "trace-agent-verification-v4",
+        "evidence_selection_prompt_version": "trace-agent-evidence-index-v3",
+        "input_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260822_222726_7af71bbc/02_user_screen/user_screen__batch_20260822_184756_50ad9a83__run_20260822_222726_7af71bbc.jsonl",
+        "selected_trace_count": 1194,
+        "completed_trace_count": 1194,
+        "pending_trace_count": 0,
+        "failed_trace_count": 0,
+        "strategy_counts": {
+          "compact_user_screen_then_direct_agent_verification": 181,
+          "compact_user_screen_then_indexed_agent_verification": 762,
+          "episode_partitioned_agent_verification": 251
+        },
+        "output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260822_222726_7af71bbc/03_agent_verify/trace_analysis__batch_20260822_184756_50ad9a83__run_20260822_222726_7af71bbc.jsonl",
+        "errors_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260822_222726_7af71bbc/03_agent_verify/errors.jsonl",
+        "updated_at": "2026-08-27T07:04:13+08:00",
+        "provider_history": [
+          "ailab_direct",
+          "pjlab_proxy_multi_key",
+          "pjlab_proxy_multi_key_long_context",
+          "pjlab_proxy_multi_key_strict_schema"
+        ],
+        "model_history": [
+          "glm-5.2",
+          "glm-5.2-1m"
+        ]
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260822_222726_7af71bbc/04_results/manifest.json",
+      "bytes": 904,
+      "sha256": "0cea74956d284412ec2b85b8a8fec176e2edc5617b01632ba9cadbf0b802d530",
+      "manifest": {
+        "manifest_version": "1.0",
+        "stage": "04_results",
+        "status": "completed",
+        "batch_id": "batch_20260822_184756_50ad9a83",
+        "analysis_run_id": "run_20260822_222726_7af71bbc",
+        "schema_version": "pain-case-v1",
+        "input_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260822_222726_7af71bbc/03_agent_verify/trace_analysis__batch_20260822_184756_50ad9a83__run_20260822_222726_7af71bbc.jsonl",
+        "output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260822_222726_7af71bbc/04_results/pain_cases__batch_20260822_184756_50ad9a83__run_20260822_222726_7af71bbc.jsonl",
+        "case_count": 1673,
+        "judgment_counts": {
+          "excluded": 732,
+          "confirmed": 844,
+          "review": 97
+        },
+        "generated_at": "2026-08-27T07:06:38+08:00"
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260822_222726_7af71bbc/05_report_publish/manifest.json",
+      "bytes": 1313,
+      "sha256": "693f5034855364a2996fc0f994f567d6e0271da74fa7a11cfb4df4e924cc4a7e",
+      "manifest": {
+        "manifest_version": "1.0",
+        "stage": "05_report_publish",
+        "status": "completed",
+        "batch_id": "batch_20260822_184756_50ad9a83",
+        "analysis_run_id": "run_20260822_222726_7af71bbc",
+        "input_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260822_222726_7af71bbc/04_results/pain_cases__batch_20260822_184756_50ad9a83__run_20260822_222726_7af71bbc.jsonl",
+        "report_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260822_222726_7af71bbc/05_report_publish/pain_analysis__batch_20260822_184756_50ad9a83__run_20260822_222726_7af71bbc.md",
+        "bundle_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260822_222726_7af71bbc/05_report_publish/web_bundle",
+        "publication_path": "${TRACE_ANALYSIS_SOURCE}/workspace/publications/pain-report/batches/batch_20260822_184756_50ad9a83/run_20260822_222726_7af71bbc",
+        "catalog_path": "${TRACE_ANALYSIS_SOURCE}/workspace/publications/pain-report/catalog.json",
+        "case_count": 1673,
+        "generated_at": "2026-08-27T07:14:50+08:00"
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260822_222726_7af71bbc/06_trace_quality_labeling/trace-label-selection-v6-20260917/evidence-registration-repair-20260920/manifest.json",
+      "bytes": 1892,
+      "sha256": "9203722aeba622df16a69c9ea956ecc95833d42850948c0908f2e5d487864490",
+      "manifest": {
+        "operation": "register_existing_verified_tool_evidence",
+        "new_model_calls": 0,
+        "source_selection": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260822_222726_7af71bbc/06_trace_quality_labeling/trace-label-selection-v6-20260917/selection-v7-trace-first-20260918-r08",
+        "source_label_sha256": "086f8f41e2f3f1456c623e4fb2bf8dc4cd51dc240983a5eae3c87b1bb90e102c",
+        "registered_evidence_count": 5,
+        "results": [
+          {
+            "case_id": "episode_99369d300ba246ebd4c75165__line_762",
+            "decision": "priority_candidate",
+            "prechecks": {
+              "valid_label_and_references": "pass",
+              "scope_match": "pass",
+              "no_selection_critical_unresolved_conflict": "pass"
+            }
+          },
+          {
+            "case_id": "episode_bdd89cd2b8198e2323be04be__line_461",
+            "decision": "review",
+            "prechecks": {
+              "valid_label_and_references": "pass",
+              "scope_match": "pass",
+              "no_selection_critical_unresolved_conflict": "pending"
+            }
+          },
+          {
+            "case_id": "episode_eb7225e9760c45c73936c961__line_1199",
+            "decision": "review",
+            "prechecks": {
+              "valid_label_and_references": "pass",
+              "scope_match": "pass",
+              "no_selection_critical_unresolved_conflict": "pending"
+            }
+          },
+          {
+            "case_id": "episode_f9ec230027bbb43d8f74cddc__line_1209",
+            "decision": "priority_candidate",
+            "prechecks": {
+              "valid_label_and_references": "pass",
+              "scope_match": "pass",
+              "no_selection_critical_unresolved_conflict": "pass"
+            }
+          }
+        ],
+        "note": "Original label/run files unchanged; derived labels add evidence refs, regenerate review view, and rebind audit hashes. Original model rule statuses and substantive reasons retained; evidence identifiers corrected. 461 uses actual tool result instead of command."
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260822_222726_7af71bbc/06_trace_quality_labeling/trace-label-selection-v6-20260917/indexed-selection-151-20260920/manifest.json",
+      "bytes": 752,
+      "sha256": "4cc06510ecc353d441e674cbd7d6c5a939efbd8b8e92cd41a522add2c4e0b293",
+      "manifest": {
+        "case_id": "episode_2d97f107691537c1a8848c5f__line_151",
+        "original_bundle_sha256": "5ccce373ecbe55d61cb1480b26502357918ad58462eb56324b5b21a8c05fd30a",
+        "derived_bundle_sha256": "c7ace1c21d2e93e77d6f8e07bd8fcc6932b48a613eb2b0e22c18668ece9a5d35",
+        "label_sha256": "0f161ed147964991c57d7a1d0468b27724cdfb1301ad564be8be999d3824e734",
+        "deferred_chunks": 32,
+        "deferred_characters": 341250,
+        "provided_events": 131,
+        "all_user_events_retained": true,
+        "all_label_references_retained": true,
+        "source_bundle_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260822_222726_7af71bbc/06_trace_quality_labeling/trace-label-selection-v6-20260917/evidence.jsonl"
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260822_222726_7af71bbc/06_trace_quality_labeling/trace-label-selection-v6-20260917/reference-type-repair-20260920/manifest.json",
+      "bytes": 1514,
+      "sha256": "0d1da76844b91d182ceaf615f340a04f5b341ef04f45b6f7fe995ca14b1c6fe4",
+      "manifest": {
+        "operation": "deterministic_reference_type_repair",
+        "new_model_calls": 0,
+        "source_selection": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260822_222726_7af71bbc/06_trace_quality_labeling/trace-label-selection-v6-20260917/selection-v7-trace-first-20260918-r08",
+        "source_response_cache_keys": [
+          "98889375c4c6349b33aad4aa288f8b3978a1d62d4be9479ed9adc3271d469c3a",
+          "e55e17c4b4691e9a5a8ea8f88066b2b0257f8691d831565bacb79b6938504c86"
+        ],
+        "unchanged_fields": [
+          "rule status",
+          "reason",
+          "evidence_ids",
+          "labels",
+          "policy"
+        ],
+        "changes": 7,
+        "results": [
+          {
+            "case_id": "episode_3f619472c345f5cd064a2f7b__line_103",
+            "decision": "priority_candidate"
+          },
+          {
+            "case_id": "episode_66a72912d9445026151d52c4__line_698",
+            "decision": "review"
+          }
+        ],
+        "inputs": {
+          "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260822_222726_7af71bbc/06_trace_quality_labeling/trace-label-selection-v6-20260917/labels.jsonl": "ef8c13c812d723184b55fa36b2e95985b10ac9a00782061b27c8fa280e11e2d6",
+          "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260822_222726_7af71bbc/06_trace_quality_labeling/trace-label-selection-v6-20260917/evidence.jsonl": "116d3938245a29b7702cda490593d552c111cc2e5b74b4bddc3c9b9d1f2b5c8d"
+        }
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260822_222726_7af71bbc/06_trace_quality_labeling/trace-label-selection-v6-20260917/requirement-support-repair-287-20260920/manifest.json",
+      "bytes": 1903,
+      "sha256": "e43c74314277e1c4c863ba7f502379959e29837b8002686f407b3e204cfaf113",
+      "manifest": {
+        "operation": "correct_requirement_text_support_only",
+        "label_reviewer": "codex-local-review",
+        "original_model_review_cache_key": "426bfe4297d105341869f7a01084b46630887e2796795f2534f6e896559deda8",
+        "audit_method": "reuse unchanged prior model rule judgments, rebind to corrected label; not a new API review",
+        "new_external_model_calls": 0,
+        "old_label_sha256": "b134b064f14f0b2a1f4ef48b18eb85d69e26bfa867613f9c43f79785fec82c4d",
+        "new_label_sha256": "8498ccb8912e9abd9b8ac0769b8d4d070b6cbae80ccfca96aab686bcd39af179",
+        "before_claim": {
+          "claim_id": "claim_req_md",
+          "field_path": "case_requirements[3]",
+          "target_id": "req_md",
+          "reason": "用户要求用纯md格式写最终稿。",
+          "evidence_ids": [
+            "ev_md_req"
+          ],
+          "missing_evidence_queries": [
+            "md最终稿是否成功生成的直接工具输出证据"
+          ],
+          "conflicting_evidence_ids": [],
+          "support_status": "partial",
+          "is_core": false
+        },
+        "after_claim": {
+          "claim_id": "claim_req_md",
+          "field_path": "case_requirements[3].text",
+          "target_id": "req_md",
+          "reason": "用户原话“再用纯md格式写最终稿”直接支持此项需求文字。是否生成或交付成功属于执行结果，不影响用户提出该要求的证据支持程度。本判断仅涉及需求文字，不对其来源分类、核心性或交付结果作新增判断。",
+          "evidence_ids": [
+            "ev_md_req"
+          ],
+          "missing_evidence_queries": [],
+          "conflicting_evidence_ids": [],
+          "support_status": "supported",
+          "is_core": false
+        },
+        "preserved": [
+          "requirement origin and core status",
+          "claim_domain",
+          "claim_failure_md",
+          "policy",
+          "model rule statuses/reasons/evidence"
+        ],
+        "decision": "review",
+        "prechecks": {
+          "valid_label_and_references": "pass",
+          "scope_match": "pass",
+          "no_selection_critical_unresolved_conflict": "pending"
+        }
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260822_222726_7af71bbc/06_trace_quality_labeling/trace-label-selection-v6-20260917/requirement-support-repair-975-20260920/manifest.json",
+      "bytes": 2719,
+      "sha256": "b0df96ac62cf4848318f22ffa254da71e3d731fa3510acd55f42603d96a89697",
+      "manifest": {
+        "case_id": "episode_b298385eadc0067214debc21__line_975",
+        "before_claim": {
+          "claim_id": "req_noncore1",
+          "field_path": "case_requirements[2]",
+          "target_id": "req_03",
+          "reason": "用户首条消息上传4篇PDF并要求作为参考利用，但工具解析全部失败。",
+          "evidence_ids": [
+            "ev_init_pdf",
+            "ev_pdf_fail",
+            "ev_pdf_read_err"
+          ],
+          "missing_evidence_queries": [],
+          "conflicting_evidence_ids": [],
+          "support_status": "partial",
+          "is_core": false
+        },
+        "after_claims": [
+          {
+            "claim_id": "req_noncore1",
+            "field_path": "case_requirements[2].text",
+            "target_id": "req_03",
+            "reason": "用户明确将第一篇附件作为原研究思路参考、其余三篇作为新思路参考，支持阅读并参考这些文献的要求；工具读取失败属于执行情况，不反证要求存在。",
+            "evidence_ids": [
+              "ev_pdf_scope_clarified"
+            ],
+            "missing_evidence_queries": [],
+            "conflicting_evidence_ids": [],
+            "support_status": "supported",
+            "is_core": false
+          },
+          {
+            "claim_id": "req_noncore1_origin",
+            "field_path": "case_requirements[2].origin",
+            "target_id": "req_03",
+            "reason": "该要求出现在本 Episode 初始用户消息中，支持 initial_query。",
+            "evidence_ids": [
+              "ev_pdf_scope_clarified"
+            ],
+            "missing_evidence_queries": [],
+            "conflicting_evidence_ids": [],
+            "support_status": "supported",
+            "is_core": false
+          },
+          {
+            "claim_id": "req_noncore1_core",
+            "field_path": "case_requirements[2].is_core",
+            "target_id": "req_03",
+            "reason": "用户明确“但不局限于这些方面”，核心目标是保持银行业竞争解释变量不变并寻找可行新方向；四篇文献是指定参考输入而非唯一研究路径。因此保留原非核心分类，不表示可以无视参考要求。",
+            "evidence_ids": [
+              "ev_pdf_scope_clarified"
+            ],
+            "missing_evidence_queries": [],
+            "conflicting_evidence_ids": [],
+            "support_status": "supported",
+            "is_core": false
+          }
+        ],
+        "old_label_sha256": "8b2c1bd83f08c08636d35a517a297a9e12637069de5edbd04004e39d488d2564",
+        "new_label_sha256": "b98b7f8503084b0855aafbb40676c46e661dac765f504f63ebb99905cab25dea",
+        "reviewer": "codex-local-review",
+        "new_external_model_calls": 0,
+        "unchanged": [
+          "case_requirements",
+          "assessment_target",
+          "taxonomy mappings",
+          "original tool failure evidence",
+          "policy"
+        ],
+        "decision": "priority_candidate",
+        "prechecks": {
+          "valid_label_and_references": "pass",
+          "scope_match": "pass",
+          "no_selection_critical_unresolved_conflict": "pass"
+        }
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260822_222726_7af71bbc/06_trace_quality_labeling/trace-label-selection-v6-20260917/scope-repair-210-20260920/manifest.json",
+      "bytes": 4882,
+      "sha256": "9e8a905b66263ffb5d364997aa5ec0cf3f5472cb840ffd886d24194560c963f6",
+      "manifest": {
+        "reviewer": "codex-local-review",
+        "external_model_calls": 0,
+        "source_label_sha256": "954b3b72c23cde1798e769caea1b4424b56be10288ab0b1e8061281aa415cf71",
+        "new_label_sha256": "81388ce5e7e192f457482457c7d3e86547f6049b17f561613c952a54ef49d7bc",
+        "changes": [
+          {
+            "path": "assessment_target.goal",
+            "before": "设计并验证用拉曼光谱检测化妆品滑石粉中微量石棉的快速定性方法，包括前处理分离富集方案和检测可行性评估",
+            "after": "评估用拉曼光谱检测化妆品滑石粉中微量石棉的方案可行性，围绕快速定性、经济的目标讨论分离富集前处理的改进及适用性、离心、干燥和吸附损失等技术问题。"
+          },
+          {
+            "path": "assessment_target.boundary_status",
+            "before": "needs_review",
+            "after": "confirmed"
+          },
+          {
+            "path": "case_requirements[0].text",
+            "before": "用拉曼光谱检测化妆品滑石粉中的石棉",
+            "after": "评估用拉曼光谱检测化妆品滑石粉中石棉的可行性"
+          },
+          {
+            "path": "case_requirements[1].text",
+            "before": "通过水悬浮、差速沉降、虹吸、离心、超疏水表面亲水坑体干燥浓缩等前处理步骤实现石棉富集",
+            "after": "评估并改进用户提出的水悬浮、差速沉降、虹吸、离心及表面干燥浓缩前处理构想，以实现石棉富集"
+          },
+          {
+            "path": "case_requirements[5].text",
+            "before": "方案需适用于所有可能伴生的石棉种类（六七种）",
+            "after": "分析不同伴生石棉种类的亲水性及所提分离方案对这些种类的适用性"
+          },
+          {
+            "path": "claims.goal.reason",
+            "before": "用户首条消息完整描述了用拉曼检测化妆品滑石粉中石棉的实验构想并询问可行性，后续讨论围绕分离机制、标准品获取和操作参数优化展开。",
+            "after": "用户首问完整描述实验构想并问“你觉得可行吗”，相邻助手回复为可行性分析；后续用户要求展开分离方案并追问适用性及操作风险。任务是方案咨询与改进，不将用户科研意图扩大为要求Agent实际完成实验验证。"
+          },
+          {
+            "path": "claims.boundary.support_status",
+            "before": "partial",
+            "after": "supported"
+          },
+          {
+            "path": "claims.boundary.reason",
+            "before": "用户在对话中不断补充约束（快速定性经济、适用所有石棉种类、标准品获取困难），目标边界在演进中逐步明确但仍有未决问题（如管壁吸附损失方案未定）。",
+            "after": "从初始可行性问题到分离、富集、不同石棉类型、标准品、离心、干燥及管壁吸附，均围绕同一检测方案展开。技术问题尚无最终解法属于待解决内容，不构成任务范围不明；后续要求保留其出现时间，不倒推为初始约束。"
+          },
+          {
+            "path": "claims.boundary.evidence_ids",
+            "before": [
+              "ev_init",
+              "ev_fast_qual",
+              "ev_all_types",
+              "ev_no_standard"
+            ],
+            "after": [
+              "ev_init",
+              "ev_fast_qual",
+              "ev_separation_req",
+              "ev_keep_asbestos",
+              "ev_all_types",
+              "ev_no_standard",
+              "ev_wall_adsorption"
+            ]
+          },
+          {
+            "path": "claims.req_raman.reason",
+            "before": "用户首条消息明确提出用拉曼检测化妆品滑石粉中的石棉。",
+            "after": "用户问所述拉曼检测构想是否可行，支持可行性评估要求，不据此认定要求Agent亲自实施检测。"
+          },
+          {
+            "path": "claims.req_pretreat.reason",
+            "before": "用户首条消息描述了水悬浮、差速沉降、虹吸、离心、超疏水表面浓缩等前处理步骤。",
+            "after": "用户给出前处理构想并询问可行性，后续要求展开有效分离方案，支持评估和改进流程，而非证明这些步骤已经实现富集。"
+          },
+          {
+            "path": "claims.req_all_types.reason",
+            "before": "用户指出滑石粉中石棉有六七种之多，要求方案适用于所有可能伴生的石棉种类。",
+            "after": "用户质疑不同石棉类型是否均亲水，结合相邻分离策略讨论，支持评估适用性；不扩大为必须在所有种类上实验验证成功。"
+          },
+          {
+            "path": "claims.map_all_types.reason",
+            "before": "用户要求方案适用于所有石棉种类，Agent分析六种石棉的亲水性，属于评估方法适用性。",
+            "after": "用户追问不同种类是否均亲水，要求评估依赖亲水性差异的分离方法适用性，符合“评估方法适用性”；不表示已验证通用有效。"
+          }
+        ],
+        "decision": "review",
+        "note": "Original files preserved; domain, difficulty, taxonomy IDs, core partition and execution limitations unchanged."
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260826_171418_d04ba4cc/02_user_screen/manifest.json",
+      "bytes": 1177,
+      "sha256": "32839afb9564ae22a88b0cae1015ffd9488b859fd65884e2edd60a7650c7d6b7",
+      "manifest": {
+        "manifest_version": "1.0",
+        "stage": "02_user_screen",
+        "status": "partial",
+        "batch_id": "batch_20260822_184756_50ad9a83",
+        "analysis_run_id": "run_20260826_171418_d04ba4cc",
+        "provider": "pjlab_proxy",
+        "model": "glm-5.2",
+        "prompt_version": "trace-user-screen-compact-v5",
+        "input_product": "user_turns",
+        "input_path": "${TRACE_ANALYSIS_SOURCE}/preprocessed/batch_20260822_184756_50ad9a83/user_turns__batch_20260822_184756_50ad9a83.jsonl",
+        "total_trace_count": 4,
+        "completed_trace_count": 3,
+        "pending_trace_count": 1,
+        "failed_trace_count": 1,
+        "route_counts": {
+          "analyze": 2,
+          "review": 1
+        },
+        "output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260826_171418_d04ba4cc/02_user_screen/user_screen__batch_20260822_184756_50ad9a83__run_20260826_171418_d04ba4cc.jsonl",
+        "errors_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260826_171418_d04ba4cc/02_user_screen/errors.jsonl",
+        "updated_at": "2026-08-26T17:32:30+08:00"
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260826_173237_e8188d02/02_user_screen/manifest.json",
+      "bytes": 1162,
+      "sha256": "e84751350708695f9f8644c806ea8bbb28c4996ad2e5ae27aa541e943395a05c",
+      "manifest": {
+        "manifest_version": "1.0",
+        "stage": "02_user_screen",
+        "status": "completed",
+        "batch_id": "batch_20260822_184756_50ad9a83",
+        "analysis_run_id": "run_20260826_173237_e8188d02",
+        "provider": "pjlab_proxy",
+        "model": "glm-5.2",
+        "prompt_version": "trace-user-screen-compact-v5",
+        "input_product": "user_turns",
+        "input_path": "${TRACE_ANALYSIS_SOURCE}/preprocessed/batch_20260822_184756_50ad9a83/user_turns__batch_20260822_184756_50ad9a83.jsonl",
+        "total_trace_count": 1,
+        "completed_trace_count": 1,
+        "pending_trace_count": 0,
+        "failed_trace_count": 0,
+        "route_counts": {
+          "analyze": 1
+        },
+        "output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260826_173237_e8188d02/02_user_screen/user_screen__batch_20260822_184756_50ad9a83__run_20260826_173237_e8188d02.jsonl",
+        "errors_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260826_173237_e8188d02/02_user_screen/errors.jsonl",
+        "updated_at": "2026-08-26T17:32:38+08:00"
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260826_173337_d626617b/02_user_screen/manifest.json",
+      "bytes": 1159,
+      "sha256": "b40784cbc9d9b987c194b13513bdcdf076fc9b541d9d81b4b9e59a63452e1139",
+      "manifest": {
+        "manifest_version": "1.0",
+        "stage": "02_user_screen",
+        "status": "partial",
+        "batch_id": "batch_20260822_184756_50ad9a83",
+        "analysis_run_id": "run_20260826_173337_d626617b",
+        "provider": "pjlab_proxy",
+        "model": "glm-5.2",
+        "prompt_version": "trace-user-screen-compact-v5",
+        "input_product": "user_turns",
+        "input_path": "${TRACE_ANALYSIS_SOURCE}/preprocessed/batch_20260822_184756_50ad9a83/user_turns__batch_20260822_184756_50ad9a83.jsonl",
+        "total_trace_count": 3,
+        "completed_trace_count": 2,
+        "pending_trace_count": 1,
+        "failed_trace_count": 1,
+        "route_counts": {
+          "review": 2
+        },
+        "output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260826_173337_d626617b/02_user_screen/user_screen__batch_20260822_184756_50ad9a83__run_20260826_173337_d626617b.jsonl",
+        "errors_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260826_173337_d626617b/02_user_screen/errors.jsonl",
+        "updated_at": "2026-08-26T17:50:26+08:00"
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260826_174827_0f6319a8/02_user_screen/manifest.json",
+      "bytes": 1161,
+      "sha256": "9ab43f68d55faa72abc6b3076fb2c4b1720f0336c72b371050527567e9128a45",
+      "manifest": {
+        "manifest_version": "1.0",
+        "stage": "02_user_screen",
+        "status": "completed",
+        "batch_id": "batch_20260822_184756_50ad9a83",
+        "analysis_run_id": "run_20260826_174827_0f6319a8",
+        "provider": "pjlab_proxy",
+        "model": "glm-5.2",
+        "prompt_version": "trace-user-screen-compact-v5",
+        "input_product": "user_turns",
+        "input_path": "${TRACE_ANALYSIS_SOURCE}/preprocessed/batch_20260822_184756_50ad9a83/user_turns__batch_20260822_184756_50ad9a83.jsonl",
+        "total_trace_count": 1,
+        "completed_trace_count": 1,
+        "pending_trace_count": 0,
+        "failed_trace_count": 0,
+        "route_counts": {
+          "review": 1
+        },
+        "output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260826_174827_0f6319a8/02_user_screen/user_screen__batch_20260822_184756_50ad9a83__run_20260826_174827_0f6319a8.jsonl",
+        "errors_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260826_174827_0f6319a8/02_user_screen/errors.jsonl",
+        "updated_at": "2026-08-26T17:48:29+08:00"
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260826_174912_4e8ee023/02_user_screen/manifest.json",
+      "bytes": 1161,
+      "sha256": "b2be4c95d42853dec5498a0213b48b4e23b53b35645737be4f281c5a2ce30d81",
+      "manifest": {
+        "manifest_version": "1.0",
+        "stage": "02_user_screen",
+        "status": "completed",
+        "batch_id": "batch_20260822_184756_50ad9a83",
+        "analysis_run_id": "run_20260826_174912_4e8ee023",
+        "provider": "pjlab_proxy",
+        "model": "glm-5.2",
+        "prompt_version": "trace-user-screen-compact-v5",
+        "input_product": "user_turns",
+        "input_path": "${TRACE_ANALYSIS_SOURCE}/preprocessed/batch_20260822_184756_50ad9a83/user_turns__batch_20260822_184756_50ad9a83.jsonl",
+        "total_trace_count": 1,
+        "completed_trace_count": 1,
+        "pending_trace_count": 0,
+        "failed_trace_count": 0,
+        "route_counts": {
+          "review": 1
+        },
+        "output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260826_174912_4e8ee023/02_user_screen/user_screen__batch_20260822_184756_50ad9a83__run_20260826_174912_4e8ee023.jsonl",
+        "errors_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260826_174912_4e8ee023/02_user_screen/errors.jsonl",
+        "updated_at": "2026-08-26T17:50:26+08:00"
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260826_175103_0b4e38c3/02_user_screen/manifest.json",
+      "bytes": 1161,
+      "sha256": "4342c45e5fa5c9cca7ed6fde88e56aac257c44ce76798d70eabe22c9d4ae89b5",
+      "manifest": {
+        "manifest_version": "1.0",
+        "stage": "02_user_screen",
+        "status": "completed",
+        "batch_id": "batch_20260822_184756_50ad9a83",
+        "analysis_run_id": "run_20260826_175103_0b4e38c3",
+        "provider": "pjlab_proxy",
+        "model": "glm-5.2",
+        "prompt_version": "trace-user-screen-compact-v5",
+        "input_product": "user_turns",
+        "input_path": "${TRACE_ANALYSIS_SOURCE}/preprocessed/batch_20260822_184756_50ad9a83/user_turns__batch_20260822_184756_50ad9a83.jsonl",
+        "total_trace_count": 1,
+        "completed_trace_count": 1,
+        "pending_trace_count": 0,
+        "failed_trace_count": 0,
+        "route_counts": {
+          "review": 1
+        },
+        "output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260826_175103_0b4e38c3/02_user_screen/user_screen__batch_20260822_184756_50ad9a83__run_20260826_175103_0b4e38c3.jsonl",
+        "errors_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260822_184756_50ad9a83/run_20260826_175103_0b4e38c3/02_user_screen/errors.jsonl",
+        "updated_at": "2026-08-26T17:53:54+08:00"
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260828_162718_1dd984cc/run_20260828_164200_wisland_v1/02_user_screen/manifest.json",
+      "bytes": 1246,
+      "sha256": "067833aace3f02267c20023a87943a411632263c6ee1016c716d2448a282b5e6",
+      "manifest": {
+        "manifest_version": "1.0",
+        "stage": "02_user_screen",
+        "status": "completed",
+        "batch_id": "batch_20260828_162718_1dd984cc",
+        "analysis_run_id": "run_20260828_164200_wisland_v1",
+        "provider": "ailab_direct",
+        "model": "glm-5.2",
+        "prompt_version": "trace-user-screen-compact-v5",
+        "input_product": "user_turns",
+        "input_path": "${TRACE_ANALYSIS_SOURCE}/preprocessed/batch_20260828_162718_1dd984cc/user_turns__batch_20260828_162718_1dd984cc.jsonl",
+        "total_trace_count": 970,
+        "completed_trace_count": 970,
+        "pending_trace_count": 0,
+        "failed_trace_count": 0,
+        "route_counts": {
+          "skip": 109,
+          "review": 708,
+          "analyze": 153
+        },
+        "output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260828_162718_1dd984cc/run_20260828_164200_wisland_v1/02_user_screen/user_screen__batch_20260828_162718_1dd984cc__run_20260828_164200_wisland_v1.jsonl",
+        "errors_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260828_162718_1dd984cc/run_20260828_164200_wisland_v1/02_user_screen/errors.jsonl",
+        "updated_at": "2026-08-28T17:49:45+08:00",
+        "deduplicated_trace_count": 1
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260828_162718_1dd984cc/run_20260828_164200_wisland_v1/03_agent_verify/manifest.json",
+      "bytes": 1479,
+      "sha256": "eefcf5cffdf9bd7eaa32b6cc6441ad68d63b217114b1f98aa6b05f589411d4e6",
+      "manifest": {
+        "manifest_version": "1.0",
+        "stage": "03_agent_verify",
+        "status": "completed",
+        "batch_id": "batch_20260828_162718_1dd984cc",
+        "analysis_run_id": "run_20260828_164200_wisland_v1",
+        "provider": "ailab_direct",
+        "model": "glm-5.2",
+        "agent_prompt_version": "trace-agent-verification-v4",
+        "evidence_selection_prompt_version": "trace-agent-evidence-index-v3",
+        "input_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260828_162718_1dd984cc/run_20260828_164200_wisland_v1/02_user_screen/user_screen__batch_20260828_162718_1dd984cc__run_20260828_164200_wisland_v1.jsonl",
+        "selected_trace_count": 153,
+        "completed_trace_count": 153,
+        "pending_trace_count": 0,
+        "failed_trace_count": 0,
+        "strategy_counts": {
+          "compact_user_screen_then_indexed_agent_verification": 115,
+          "compact_user_screen_then_direct_agent_verification": 26,
+          "episode_partitioned_agent_verification": 11
+        },
+        "output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260828_162718_1dd984cc/run_20260828_164200_wisland_v1/03_agent_verify/trace_analysis__batch_20260828_162718_1dd984cc__run_20260828_164200_wisland_v1.jsonl",
+        "errors_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260828_162718_1dd984cc/run_20260828_164200_wisland_v1/03_agent_verify/errors.jsonl",
+        "updated_at": "2026-08-28T18:26:04+08:00"
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260828_162718_1dd984cc/run_20260828_164200_wisland_v1/04_results/manifest.json",
+      "bytes": 910,
+      "sha256": "f7c799d41c0b297d12da99668be03cc7ff6aaa3792bac461d83c4fc39ad2410a",
+      "manifest": {
+        "manifest_version": "1.0",
+        "stage": "04_results",
+        "status": "completed",
+        "batch_id": "batch_20260828_162718_1dd984cc",
+        "analysis_run_id": "run_20260828_164200_wisland_v1",
+        "schema_version": "pain-case-v1",
+        "input_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260828_162718_1dd984cc/run_20260828_164200_wisland_v1/03_agent_verify/trace_analysis__batch_20260828_162718_1dd984cc__run_20260828_164200_wisland_v1.jsonl",
+        "output_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260828_162718_1dd984cc/run_20260828_164200_wisland_v1/04_results/pain_cases__batch_20260828_162718_1dd984cc__run_20260828_164200_wisland_v1.jsonl",
+        "case_count": 173,
+        "judgment_counts": {
+          "confirmed": 75,
+          "excluded": 92,
+          "review": 6
+        },
+        "generated_at": "2026-08-28T18:30:20+08:00"
+      }
+    },
+    {
+      "path": "workspace/analysis-runs/batch_20260828_162718_1dd984cc/run_20260828_164200_wisland_v1/05_report_publish/manifest.json",
+      "bytes": 1326,
+      "sha256": "b34bab974380ab90f34201254c6c8bba6469f194bd7643d1668739bb09e12f7f",
+      "manifest": {
+        "manifest_version": "1.0",
+        "stage": "05_report_publish",
+        "status": "completed",
+        "batch_id": "batch_20260828_162718_1dd984cc",
+        "analysis_run_id": "run_20260828_164200_wisland_v1",
+        "input_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260828_162718_1dd984cc/run_20260828_164200_wisland_v1/04_results/pain_cases__batch_20260828_162718_1dd984cc__run_20260828_164200_wisland_v1.jsonl",
+        "report_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260828_162718_1dd984cc/run_20260828_164200_wisland_v1/05_report_publish/pain_analysis__batch_20260828_162718_1dd984cc__run_20260828_164200_wisland_v1.md",
+        "bundle_path": "${TRACE_ANALYSIS_SOURCE}/workspace/analysis-runs/batch_20260828_162718_1dd984cc/run_20260828_164200_wisland_v1/05_report_publish/web_bundle",
+        "publication_path": "${TRACE_ANALYSIS_SOURCE}/workspace/publications/pain-report/batches/batch_20260828_162718_1dd984cc/run_20260828_164200_wisland_v1",
+        "catalog_path": "${TRACE_ANALYSIS_SOURCE}/workspace/publications/pain-report/catalog.json",
+        "case_count": 173,
+        "generated_at": "2026-08-28T18:31:40+08:00"
+      }
+    }
+  ]
+}

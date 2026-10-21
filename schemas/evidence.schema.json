@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "evidence-v1",
+  "type": "object",
+  "required": [
+    "evidence_id",
+    "source_snapshot_id",
+    "event_id",
+    "quote",
+    "content_digest"
+  ],
+  "properties": {
+    "evidence_id": {
+      "type": "string"
+    },
+    "source_snapshot_id": {
+      "type": "string"
+    },
+    "event_id": {
+      "type": "string"
+    },
+    "quote": {
+      "type": "string"
+    },
+    "content_digest": {
+      "type": "string"
+    }
+  }
+}

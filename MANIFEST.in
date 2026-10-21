@@ -1,0 +1,8 @@
+include README.md
+include setup.py
+recursive-include config *.yaml
+exclude config/providers.yaml
+recursive-include schemas *.json
+recursive-include prompts *.md
+recursive-include skills *.md *.yaml
+recursive-include docs *.md *.json *.yaml
