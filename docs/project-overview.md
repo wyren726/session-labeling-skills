@@ -127,15 +127,20 @@ session.jsonl
 
 论文 Fig. 2(a) 所表达的完整方法链路如下：
 
-```text
-Raw sessions
-  → Normalize
-  → Understand & detect signals
-  → Verify & attribute
-  → Label
-  → Select
-  → Audit & export
-  → Selected sessions
+```mermaid
+flowchart LR
+    R[Raw sessions] --> N[Normalize]
+    N --> U[Understand & detect signals]
+    U --> V[Verify & attribute]
+    V --> L[Label]
+    L --> S[Select]
+    S --> A[Audit & export]
+    A --> O[Selected sessions]
+
+    R -. "Full interaction, tool results & artifacts" .-> V
+    R -. "Original source records" .-> A
+    T[Taxonomy] --> L
+    P[Selection policy] --> S
 ```
 
 该流程是面向论文方法的职责整合视图，不是历史 Stage 01–06 的逐项改名，也不表示当前仓库已完整实现所有环节。尤其是 `Verify & attribute` 同时核验完整 Episode 交互、工具结果和产物证据；用户反馈只提供待核查的候选信号，不直接证明 Agent 失败或责任归属。痛点分析也不替代后续 `S1–S4` 筛选。
