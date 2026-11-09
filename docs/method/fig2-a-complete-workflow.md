@@ -8,21 +8,9 @@
 
 **输出：** 经筛选和审计的原始 session，以及能够追溯任务分析、标签和筛选理由的关联信息。
 
-```mermaid
-flowchart LR
-    R[Raw sessions] --> N[Normalize]
-    N --> U[Understand & detect signals]
-    U --> V[Verify & attribute]
-    V --> L[Label]
-    L --> S[Select]
-    S --> A[Audit & export]
-    A --> O[Selected sessions]
+![会话分析与候选筛选完整方法总图](fig2-a-complete-workflow.svg)
 
-    R -. "Full interaction, tool results & artifacts" .-> V
-    R -. "Original source records" .-> A
-    T[Taxonomy] --> L
-    P[Selection policy] --> S
-```
+图中展示六阶段的关键处理、输出和旁路输入，可直接在[项目全景说明第 4 节](../project-overview.md#4-端到端流程)阅读。保留[Mermaid 可编辑源码](fig2-a-complete-workflow.mmd)。
 
 六个步骤的作用可以概括为：**整理会话 → 理解用户任务 → 核实发生了什么 → 描述任务 → 按规则筛选 → 检查并交付结果。**
 
@@ -122,7 +110,7 @@ Episode 结束后的明确用户反馈可以辅助判断用户是否查看或评
 - **S1 Evidence-backed：** 至少有一个主要任务能力映射得到证据支持；只有辅助能力映射不够。
 - **S2 Challenging：** 任务具有实质挑战；难度为 medium/high 可通过，已确认难度低可判不入选，难度未知则待复核。
 - **S3 Recoverable goals：** 能否从会话中连贯还原任务目标和需求。
-- **S4 Checkable outcome：** 能否依据记录判断任务结果或完成情况。
+- **S4 Checkable completion criteria：** 能否从已有记录明确可核对的完成条件；不要求 Agent 已成功完成任务。
 
 **产出**
 

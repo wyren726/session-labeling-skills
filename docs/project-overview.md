@@ -123,29 +123,15 @@ session.jsonl
 | `run_manifest.json` | 本次运行使用了什么版本、配置、模型和文件，产物是否完整？ |
 | `export/session.jsonl` | 入选 session 的原生字节级副本。 |
 
-## 4. 端到端架构
+## 4. 端到端流程
 
-论文 Fig. 2(a) 所表达的完整方法链路如下：
+下图概括从原始 Agent 会话到入选会话的完整方法链。**实线是主处理顺序；虚线是共享来源回查或规则输入。**
 
-```mermaid
-flowchart LR
-    R[Raw sessions] --> N[Normalize]
-    N --> U[Understand & detect signals]
-    U --> V[Verify & attribute]
-    V --> L[Label]
-    L --> S[Select]
-    S --> A[Audit & export]
-    A --> O[Selected sessions]
+![从原始会话到入选会话的六阶段流程图](method/fig2-a-complete-workflow.svg)
 
-    R -. "Full interaction, tool results & artifacts" .-> V
-    R -. "Original source records" .-> A
-    T[Taxonomy] --> L
-    P[Selection policy] --> S
-```
+阅读时注意三条边界：用户反馈信号只是待核查线索，必须结合完整交互、工具结果和产物核验；问题、Agent 责任及能力缺口不是同一判断；是否入选由 Prechecks 和 S1–S4 决定，痛点归因不能替代筛选。
 
-该流程是面向论文方法的职责整合视图，不是历史 Stage 01–06 的逐项改名，也不表示当前仓库已完整实现所有环节。尤其是 `Verify & attribute` 同时核验完整 Episode 交互、工具结果和产物证据；用户反馈只提供待核查的候选信号，不直接证明 Agent 失败或责任归属。痛点分析也不替代后续 `S1–S4` 筛选。
-
-各步骤的输入、输出、证据边界、历史依据及与当前实现的差异，以[《Fig. 2(a) Session 分析与候选筛选流程》](method/fig2-a-complete-workflow.md)为准。本文后续章节继续说明当前仓库的工程实现与状态，两者应区分阅读。
+该图呈现完整方法，不代表当前实现已覆盖每个环节。R1–R8 用户侧分析、候选信号、归因和能力缺口仍有待实现部分，详见[历史字段映射](design/legacy-to-canonical-label-map.yaml)和本文第 13 节。阶段定义及历史依据见[方法说明](method/fig2-a-complete-workflow.md)，可编辑图稿见[Mermaid 源码](method/fig2-a-complete-workflow.mmd)。
 
 ## 5. 六个 Skill
 

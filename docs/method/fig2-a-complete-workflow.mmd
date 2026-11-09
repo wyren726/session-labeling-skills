@@ -1,0 +1,40 @@
+---
+config:
+  theme: base
+  htmlLabels: false
+  fontFamily: '"PingFang SC", "Microsoft YaHei", Arial, sans-serif'
+  themeVariables:
+    fontSize: 20px
+    primaryTextColor: '#172b41'
+    lineColor: '#52677a'
+    clusterBkg: '#f7f9fc'
+    clusterBorder: '#cad5df'
+  flowchart:
+    wrappingWidth: 900
+    nodeSpacing: 32
+    rankSpacing: 34
+    padding: 18
+    curve: linear
+---
+flowchart TB
+    IN["原始 Agent 会话 Raw sessions<br/>用户消息 · Agent 回复 · 工具调用与结果 · 错误 / 附件"]:::source
+    N["1. 标准化 Normalize<br/>恢复 records、turns、events 的顺序与关联；保留原文位置、未知记录和来源标识<br/>输出：带 provenance 的标准化会话"]:::stage
+    U["2. 理解任务并发现信号 Understand & detect signals<br/>R1–R8：划分 Episode、定位初始 Query、提取目标 / 需求及其变化<br/>标记候选用户反馈信号并保留原文；此处不判定失败或归责<br/>输出：用户侧任务理解与待核查信号"]:::stage
+    V["3. 完整交互核验与归因 Verify & attribute<br/>联合上一步与完整 Episode：检查 Agent 回复、工具结果、错误和可观察产物<br/>逐项核实需求结果；区分是否有问题、是否与 Agent 有关、原因及有证据的能力缺口<br/>输出：核验结果、证据引用、归因与未决项"]:::stage
+    L["4. 任务标签 Label<br/>依据核验后的需求和 Canonical taxonomy，生成带证据的能力映射与任务属性<br/>附 S3 / S4 语义审查；任务能力映射与 Agent 能力缺口分开记录<br/>输出：结构化标签与 evidence refs"]:::stage
+    S["5. 规则筛选 Select<br/>先做 Prechecks，再逐项记录 S1（证据支持的主能力）· S2（挑战度）· S3（需求可还原）· S4（完成条件可核查）<br/>输出：selected / not_selected / pending_review / invalid 及逐项理由"]:::stage
+    A["6. 审计与交付 Audit & export<br/>回查来源、原文与证据；校验 schema、lineage、标签、决定和导出一致性<br/>按当前策略：至少一个 Episode 入选，导出整个原始 session<br/>输出：入选原始会话及关联分析、标签、筛选理由和证据索引"]:::stage
+    OUT["Selected sessions<br/>候选会话语料 + 可追溯的分析与证据元数据"]:::output
+    TAX["Canonical taxonomy<br/>任务能力定义与映射规则"]:::side
+    POLICY["Selection policy<br/>Prechecks + S1–S4 + 决策规则"]:::side
+    EVID["共享原始来源 / 证据<br/>完整交互 · 工具结果 · 可观察产物 · 原文位置"]:::side
+    IN --> N --> U --> V --> L --> S --> A --> OUT
+    TAX -.-> L
+    POLICY -.-> S
+    IN -.- EVID
+    EVID -. 核验完整交互与结果 .-> V
+    EVID -. 审计回查 .-> A
+    classDef source fill:#f1f5f9,stroke:#62748a,color:#172b41,stroke-width:1.5px
+    classDef stage fill:#eaf3fc,stroke:#6087ad,color:#173957,stroke-width:1.5px
+    classDef side fill:#fff4df,stroke:#bb8c3d,color:#573d10,stroke-width:1.5px
+    classDef output fill:#eaf5ed,stroke:#649674,color:#234b30,stroke-width:1.8px
