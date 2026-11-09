@@ -8,22 +8,20 @@
 
 **输出：** 经筛选和审计的原始 session，以及能够追溯任务分析、标签和筛选理由的关联信息。
 
-```text
-Raw sessions
-    ↓
-Normalize
-    ↓
-Understand & detect signals
-    ↓
-Verify & attribute
-    ↓
-Label
-    ↓
-Select
-    ↓
-Audit & export
-    ↓
-Selected sessions
+```mermaid
+flowchart LR
+    R[Raw sessions] --> N[Normalize]
+    N --> U[Understand & detect signals]
+    U --> V[Verify & attribute]
+    V --> L[Label]
+    L --> S[Select]
+    S --> A[Audit & export]
+    A --> O[Selected sessions]
+
+    R -. "Full interaction, tool results & artifacts" .-> V
+    R -. "Original source records" .-> A
+    T[Taxonomy] --> L
+    P[Selection policy] --> S
 ```
 
 六个步骤的作用可以概括为：**整理会话 → 理解用户任务 → 核实发生了什么 → 描述任务 → 按规则筛选 → 检查并交付结果。**
