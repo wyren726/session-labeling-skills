@@ -125,53 +125,22 @@ session.jsonl
 
 ## 4. 端到端架构
 
-完整链路如下：
+论文 Fig. 2(a) 所表达的完整方法链路如下：
 
 ```text
-native session.jsonl
-  │
-  ▼
-确定性 ingestion
-  - 原始记录解析
-  - turn / event 恢复
-  - tool call / result 关联
-  - source snapshot、hash、稳定 ID
-  │
-  ▼
-Session Understanding
-  - Episode 发现
-  - 跨窗口候选 reconcile
-  - 用户目标、需求、需求演化
-  │
-  ▼
-Evidence Analysis
-  - Agent 行为
-  - 工具和文件结果
-  - requirement-level outcome
-  - exact quote / event evidence
-  │
-  ▼
-Quality Labeling
-  - claim support
-  - capability mappings
-  - task attributes
-  - S3 / S4 semantic reviews
-  │
-  ▼
-Deterministic Selection
-  - prechecks
-  - S1 / S2 / S3 / S4
-  - selected / not_selected / pending_review / invalid
-  │
-  ▼
-Audit and Export
-  - schema、引用和 lineage 校验
-  - selector 重算
-  - artifact hash / size
-  - 原生 session 导出
+Raw sessions
+  → Normalize
+  → Understand & detect signals
+  → Verify & attribute
+  → Label
+  → Select
+  → Audit & export
+  → Selected sessions
 ```
 
-其中，ingestion、schema 验证、引用检查、S1/S2 计算、决策表、manifest 和审计是程序确定性逻辑；Episode 理解、证据语义分析、capability 判断和 S3/S4 语义判断需要结构化模型调用。模型输出始终被视为待验证数据，必须通过 schema 和引用检查后才能进入下游。
+该流程是面向论文方法的职责整合视图，不是历史 Stage 01–06 的逐项改名，也不表示当前仓库已完整实现所有环节。尤其是 `Verify & attribute` 同时核验完整 Episode 交互、工具结果和产物证据；用户反馈只提供待核查的候选信号，不直接证明 Agent 失败或责任归属。痛点分析也不替代后续 `S1–S4` 筛选。
+
+各步骤的输入、输出、证据边界、历史依据及与当前实现的差异，以[《Fig. 2(a) Session 分析与候选筛选流程》](method/fig2-a-complete-workflow.md)为准。本文后续章节继续说明当前仓库的工程实现与状态，两者应区分阅读。
 
 ## 5. 六个 Skill
 

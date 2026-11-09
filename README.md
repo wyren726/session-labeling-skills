@@ -6,6 +6,8 @@
 
 ## 端到端流程
 
+论文 Fig. 2(a) 的完整方法流程、逐步输入输出及与当前实现的边界见[方法流程文档](docs/method/fig2-a-complete-workflow.md)。下方概述仓库当前实现的工程链路。
+
 ```text
 native session.jsonl
   -> canonical ingestion / turn recovery
